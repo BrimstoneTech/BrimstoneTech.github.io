@@ -4,6 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BrimstoneTech — Software Forged in Fire</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="BrimstoneTech — Custom Odoo modules, Python automation, and AI integrations. Clean code that actually works, built by a developer who ships.">
+    <meta name="keywords" content="Odoo developer, custom Odoo modules, Python automation, AI integration, ERP consulting, Odoo Community, Odoo Enterprise, freelance developer, BrimstoneTech">
+    <meta name="author" content="BrimstoneTech">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://brimstonetech.github.io/">
+
+    <!-- Open Graph (Facebook, LinkedIn, Slack previews) -->
+    <meta property="og:title" content="BrimstoneTech — Software Forged in Fire">
+    <meta property="og:description" content="Custom Odoo modules, Python automation, and AI integrations — built by a developer who ships clean code that actually works.">
+    <meta property="og:image" content="https://brimstonetech.github.io/icon-512.png">
+    <meta property="og:url" content="https://brimstonetech.github.io/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="BrimstoneTech">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="BrimstoneTech — Software Forged in Fire">
+    <meta name="twitter:description" content="Custom Odoo modules, Python automation, and AI integrations.">
+    <meta name="twitter:image" content="https://brimstonetech.github.io/icon-512.png">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "BrimstoneTech",
+        "url": "https://brimstonetech.github.io",
+        "logo": "https://brimstonetech.github.io/logo.png",
+        "description": "Custom Odoo modules, Python automation, and AI integrations.",
+        "sameAs": ["https://github.com/BrimstoneTech"],
+        "serviceType": ["Odoo Development", "Python Automation", "AI Integration", "ERP Consulting"],
+        "areaServed": "Worldwide",
+        "priceRange": "$$"
+    }
+    </script>
     <meta name="description" content="BrimstoneTech builds custom Odoo modules, Python automation, and AI integrations. Software engineering that burns through complexity.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -85,13 +127,13 @@
             width: 36px;
             height: 36px;
             border-radius: 8px;
-            background: linear-gradient(135deg, var(--ember), var(--flame));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1.1rem;
-            color: var(--charcoal);
+            overflow: hidden;
+        }
+
+        .nav-logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         .nav-logo-text {
@@ -1151,7 +1193,7 @@
     <!-- Navigation -->
     <nav id="mainNav">
         <a href="#" class="nav-logo">
-            <div class="nav-logo-icon" id="navLogoIcon">B</div>
+            <div class="nav-logo-icon" id="navLogoIcon"><img src="logo.png" alt="BrimstoneTech logo"></div>
             <div class="nav-logo-text">Brimstone<span>Tech</span></div>
         </a>
         <ul class="nav-links" id="navLinks">
