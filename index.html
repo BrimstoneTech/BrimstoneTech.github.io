@@ -1184,6 +1184,249 @@
             height: 60px;
             margin-top: -60px;
         }
+
+        /* ═══════════════════════════════════════
+           VISITOR COUNTER
+           ═══════════════════════════════════════ */
+        .visitor-counter-section {
+            padding: 2.5rem 2rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .visitor-counter-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--ember), transparent);
+        }
+
+        .visitor-counter-wrap {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            background: rgba(232, 113, 10, 0.05);
+            border: 1px solid rgba(232, 113, 10, 0.12);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        .visitor-counter-wrap:hover {
+            border-color: rgba(232, 113, 10, 0.3);
+            background: rgba(232, 113, 10, 0.08);
+        }
+
+        .visitor-flame-icon {
+            width: 20px;
+            height: 20px;
+            position: relative;
+            animation: flamePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes flamePulse {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.15); }
+        }
+
+        .visitor-counter-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--warm-white);
+            letter-spacing: 0.05em;
+            min-width: 3ch;
+        }
+
+        .visitor-counter-label {
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--dim);
+        }
+
+        .visitor-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--ember);
+            animation: dotGlow 2s ease-in-out infinite;
+            box-shadow: 0 0 6px var(--ember);
+        }
+
+        @keyframes dotGlow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        /* ═══════════════════════════════════════
+           GIFT MODAL (scroll-triggered)
+           ═══════════════════════════════════════ */
+        .gift-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(13, 11, 10, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .gift-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .gift-card {
+            background: var(--ash);
+            border: 1px solid rgba(232, 113, 10, 0.2);
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            max-width: 460px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            transform: translateY(30px) scale(0.95);
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 0 80px rgba(232, 113, 10, 0.1), 0 0 200px rgba(232, 113, 10, 0.05);
+            overflow: hidden;
+        }
+
+        .gift-overlay.active .gift-card {
+            transform: translateY(0) scale(1);
+        }
+
+        .gift-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--ember), var(--flame), var(--gold), var(--flame), var(--ember));
+            background-size: 200% 100%;
+            animation: shimmerBar 3s linear infinite;
+        }
+
+        @keyframes shimmerBar {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .gift-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, rgba(232, 113, 10, 0.15), rgba(245, 158, 11, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            animation: giftBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes giftBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .gift-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--warm-white);
+            margin-bottom: 0.75rem;
+        }
+
+        .gift-subtitle {
+            font-size: 0.95rem;
+            color: var(--warm-gray);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .gift-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 2rem;
+            background: linear-gradient(135deg, var(--ember), #c45a08);
+            color: var(--warm-white);
+            border: none;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .gift-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(232, 113, 10, 0.3);
+        }
+
+        .gift-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--warm-gray);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+        }
+
+        .gift-close:hover {
+            background: rgba(255,255,255,0.1);
+            color: var(--warm-white);
+        }
+
+        .gift-particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .gift-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--ember);
+            opacity: 0;
+            animation: giftSparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes giftSparkle {
+            0%, 100% { opacity: 0; transform: translateY(0) scale(0.5); }
+            50% { opacity: 0.6; transform: translateY(-20px) scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .gift-card { padding: 2rem 1.5rem; }
+            .gift-title { font-size: 1.25rem; }
+        }
     </style>
 </head>
 <body>
@@ -1506,10 +1749,39 @@
         </div>
     </section>
 
+    <!-- Visitor Counter -->
+    <div class="visitor-counter-section">
+        <div class="visitor-counter-wrap">
+            <div class="visitor-dot"></div>
+            <svg class="visitor-flame-icon" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C10 6 6 8 6 13a6 6 0 0012 0c0-3-1.5-5-2.5-7C14.5 4.5 13 3 12 2z" fill="url(#flameGrad)" opacity="0.9"/>
+                <path d="M12 9c-1 2-3 3-3 5.5a3 3 0 006 0c0-1.5-.75-2.5-1.25-3.5C13.25 10.25 12.5 9.5 12 9z" fill="#FBBF24" opacity="0.8"/>
+                <defs><linearGradient id="flameGrad" x1="12" y1="2" x2="12" y2="19"><stop stop-color="#F59E0B"/><stop offset="1" stop-color="#E8710A"/></linearGradient></defs>
+            </svg>
+            <span class="visitor-counter-number" id="visitorCount">—</span>
+            <span class="visitor-counter-label">explorers have passed through</span>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <p>© 2025 BrimstoneTech · Kampala, Uganda</p>
     </footer>
+
+    <!-- Gift Modal (triggered at 50% scroll) -->
+    <div class="gift-overlay" id="giftOverlay">
+        <div class="gift-card">
+            <button class="gift-close" id="giftClose" aria-label="Close">✕</button>
+            <div class="gift-particles" id="giftParticles"></div>
+            <div class="gift-icon">🔥</div>
+            <h3 class="gift-title" id="giftTitle">You've reached the forge!</h3>
+            <p class="gift-subtitle" id="giftSubtitle">Loading your gift...</p>
+            <a class="gift-btn" id="giftBtn" href="#" target="_blank">
+                Claim Your Gift
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+    </div>
 
     <script>
         // ═══════════════════════════════════════
@@ -1700,6 +1972,109 @@
                 }
             });
         });
+
+        // ═══════════════════════════════════════
+        // VISITOR COUNTER
+        // Uses CountAPI (free, no auth, persistent)
+        // Fallback: localStorage estimate
+        // ═══════════════════════════════════════
+        (function initVisitorCounter() {
+            const el = document.getElementById('visitorCount');
+            const STORAGE_KEY = 'bt_visit_counted';
+            const COUNT_CACHE_KEY = 'bt_visitor_count';
+            const isNewSession = !sessionStorage.getItem(STORAGE_KEY);
+
+            // Animate count display
+            function animateCount(target) {
+                let current = 0;
+                const duration = 1200;
+                const start = performance.now();
+                function step(now) {
+                    const progress = Math.min((now - start) / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    current = Math.floor(eased * target);
+                    el.textContent = current.toLocaleString();
+                    if (progress < 1) requestAnimationFrame(step);
+                    else el.textContent = target.toLocaleString();
+                }
+                requestAnimationFrame(step);
+            }
+
+            // Try CountAPI
+            const namespace = 'brimstonetech-github-io';
+            const key = 'page-visits';
+            const endpoint = isNewSession
+                ? `https://api.countapi.xyz/hit/${namespace}/${key}`
+                : `https://api.countapi.xyz/get/${namespace}/${key}`;
+
+            fetch(endpoint)
+                .then(r => r.json())
+                .then(data => {
+                    if (data && data.value) {
+                        sessionStorage.setItem(STORAGE_KEY, '1');
+                        localStorage.setItem(COUNT_CACHE_KEY, data.value);
+                        animateCount(data.value);
+                    } else {
+                        throw new Error('No value');
+                    }
+                })
+                .catch(() => {
+                    // Fallback: local estimate
+                    let count = parseInt(localStorage.getItem(COUNT_CACHE_KEY) || '0');
+                    if (isNewSession) {
+                        count += 1;
+                        localStorage.setItem(COUNT_CACHE_KEY, count);
+                        sessionStorage.setItem(STORAGE_KEY, '1');
+                    }
+                    animateCount(count || 1);
+                });
+        })();
+
+        // ═══════════════════════════════════════
+        // GIFT MECHANISM — SCROLL TRIGGER AT 50%
+        // ═══════════════════════════════════════
+        (function initGiftMechanism() {
+            const overlay = document.getElementById('giftOverlay');
+            const closeBtn = document.getElementById('giftClose');
+            const GIFT_SHOWN_KEY = 'bt_gift_shown';
+            let giftTriggered = false;
+
+            // Don't show again if already shown this session
+            if (sessionStorage.getItem(GIFT_SHOWN_KEY)) return;
+
+            // Spawn decorative particles inside the gift card
+            const particleContainer = document.getElementById('giftParticles');
+            for (let i = 0; i < 8; i++) {
+                const p = document.createElement('div');
+                p.className = 'gift-particle';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.top = Math.random() * 100 + '%';
+                p.style.animationDelay = (Math.random() * 2) + 's';
+                p.style.background = ['#E8710A', '#F59E0B', '#FBBF24'][Math.floor(Math.random() * 3)];
+                particleContainer.appendChild(p);
+            }
+
+            // Scroll listener
+            function onScroll() {
+                if (giftTriggered) return;
+                const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+                if (scrollPercent >= 0.5) {
+                    giftTriggered = true;
+                    sessionStorage.setItem(GIFT_SHOWN_KEY, '1');
+                    overlay.classList.add('active');
+                    window.removeEventListener('scroll', onScroll);
+                }
+            }
+            window.addEventListener('scroll', onScroll);
+
+            // Close
+            closeBtn.addEventListener('click', () => {
+                overlay.classList.remove('active');
+            });
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) overlay.classList.remove('active');
+            });
+        })();
     </script>
 </body>
 </html>
