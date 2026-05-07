@@ -2292,24 +2292,62 @@
                 if (e.target === overlay) overlay.classList.remove('active');
             });
 
+            // Force-download helper: fetch as blob then trigger save
+            function forceDownload(url, filename) {
+                fetch(url)
+                    .then(resp => resp.blob())
+                    .then(blob => {
+                        const a = document.createElement('a');
+                        a.href = URL.createObjectURL(blob);
+                        a.download = filename || url.split('/').pop();
+                        document.body.appendChild(a);
+                        a.click();
+                        setTimeout(() => {
+                            URL.revokeObjectURL(a.href);
+                            a.remove();
+                        }, 100);
+                    })
+                    .catch(() => {
+                        // Fallback: open in new tab
+                        window.open(url, '_blank');
+                    });
+            }
+
+            // Wire up all gallery download buttons
+            document.querySelectorAll('.wp-gallery-dl').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    forceDownload(btn.getAttribute('href'), btn.getAttribute('href').split('/').pop());
+                });
+            });
+
             // Click gallery item → open lightbox preview
             document.querySelectorAll('.wp-gallery-item').forEach(item => {
                 item.addEventListener('click', (e) => {
-                    // Don't open lightbox if they clicked the download button
                     if (e.target.closest('.wp-gallery-dl')) return;
                     const fullSrc = item.getAttribute('data-full');
                     lightboxImg.src = fullSrc;
-                    lightboxDl.href = fullSrc;
+                    lightboxDl.setAttribute('data-src', fullSrc);
+                    lightboxDl.setAttribute('data-filename', fullSrc.split('/').pop());
                     lightbox.classList.add('active');
                 });
             });
 
-            // Close lightbox
+            // Lightbox download button
+            lightboxDl.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const src = lightboxDl.getAttribute('data-src');
+                const filename = lightboxDl.getAttribute('data-filename');
+                if (src) forceDownload(src, filename);
+            });
+
+            // Close lightbox (but not when clicking download button)
             lightbox.addEventListener('click', (e) => {
-                if (e.target === lightbox || e.target === lightboxImg) {
-                    lightbox.classList.remove('active');
-                    lightboxImg.src = '';
-                }
+                if (e.target.closest('.wp-lightbox-dl')) return;
+                lightbox.classList.remove('active');
+                lightboxImg.src = '';
             });
 
             // ESC key closes lightbox or overlay
