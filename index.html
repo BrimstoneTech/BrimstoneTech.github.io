@@ -1269,11 +1269,12 @@
         /* ═══════════════════════════════════════
            GIFT MODAL (scroll-triggered)
            ═══════════════════════════════════════ */
+        /* ═══ WALLPAPER GALLERY OVERLAY ═══ */
         .gift-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(13, 11, 10, 0.85);
-            backdrop-filter: blur(8px);
+            background: rgba(13, 11, 10, 0.92);
+            backdrop-filter: blur(12px);
             z-index: 10000;
             display: flex;
             align-items: center;
@@ -1281,6 +1282,8 @@
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.5s ease;
+            overflow-y: auto;
+            padding: 2rem 1rem;
         }
 
         .gift-overlay.active {
@@ -1292,9 +1295,9 @@
             background: var(--ash);
             border: 1px solid rgba(232, 113, 10, 0.2);
             border-radius: 20px;
-            padding: 3rem 2.5rem;
-            max-width: 460px;
-            width: 90%;
+            padding: 2.5rem 2rem 2rem;
+            max-width: 820px;
+            width: 95%;
             text-align: center;
             position: relative;
             transform: translateY(30px) scale(0.95);
@@ -1325,57 +1328,145 @@
         }
 
         .gift-icon {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 1.5rem;
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 1rem;
             background: linear-gradient(135deg, rgba(232, 113, 10, 0.15), rgba(245, 158, 11, 0.1));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             animation: giftBounce 2s ease-in-out infinite;
         }
 
         @keyframes giftBounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
+            50% { transform: translateY(-4px); }
         }
 
         .gift-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--warm-white);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.4rem;
         }
 
         .gift-subtitle {
-            font-size: 0.95rem;
-            color: var(--warm-gray);
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-
-        .gift-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.85rem 2rem;
-            background: linear-gradient(135deg, var(--ember), #c45a08);
-            color: var(--warm-white);
-            border: none;
-            border-radius: 10px;
             font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
+            color: var(--warm-gray);
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
         }
 
-        .gift-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(232, 113, 10, 0.3);
+        /* Gallery grid */
+        .wp-gallery-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--ember);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.75rem;
+            text-align: left;
+        }
+
+        .wp-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .wp-gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(232, 113, 10, 0.1);
+            background: var(--charcoal);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            group: true;
+        }
+
+        .wp-gallery-item:hover {
+            border-color: var(--ember);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(232, 113, 10, 0.15);
+        }
+
+        .wp-gallery-item img {
+            width: 100%;
+            display: block;
+            aspect-ratio: 3/2;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .wp-gallery-item.mobile img {
+            aspect-ratio: 2/3;
+        }
+
+        .wp-gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .wp-gallery-info {
+            padding: 0.6rem 0.75rem;
+            text-align: left;
+        }
+
+        .wp-gallery-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--warm-white);
+            margin-bottom: 0.15rem;
+        }
+
+        .wp-gallery-desc {
+            font-size: 0.7rem;
+            color: var(--dim);
+            line-height: 1.3;
+        }
+
+        .wp-gallery-dl {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(13, 11, 10, 0.75);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(232, 113, 10, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(-4px);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .wp-gallery-item:hover .wp-gallery-dl {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wp-gallery-dl svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--flame);
+        }
+
+        .wp-gallery-dl:hover {
+            background: var(--ember);
+        }
+
+        .wp-gallery-dl:hover svg {
+            stroke: var(--warm-white);
         }
 
         .gift-close {
@@ -1394,6 +1485,7 @@
             justify-content: center;
             font-size: 1.1rem;
             transition: all 0.2s;
+            z-index: 2;
         }
 
         .gift-close:hover {
@@ -1423,9 +1515,72 @@
             50% { opacity: 0.6; transform: translateY(-20px) scale(1); }
         }
 
+        /* Lightbox for full preview */
+        .wp-lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            cursor: zoom-out;
+        }
+
+        .wp-lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .wp-lightbox img {
+            max-width: 92vw;
+            max-height: 88vh;
+            border-radius: 12px;
+            box-shadow: 0 0 60px rgba(232, 113, 10, 0.2);
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .wp-lightbox.active img {
+            transform: scale(1);
+        }
+
+        .wp-lightbox-dl {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.8rem;
+            background: linear-gradient(135deg, var(--ember), #c45a08);
+            color: var(--warm-white);
+            border: none;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .wp-lightbox-dl:hover {
+            transform: translateX(-50%) translateY(-2px);
+            box-shadow: 0 8px 24px rgba(232, 113, 10, 0.3);
+        }
+
         @media (max-width: 768px) {
-            .gift-card { padding: 2rem 1.5rem; }
-            .gift-title { font-size: 1.25rem; }
+            .gift-card { padding: 1.5rem 1rem 1rem; max-width: 100%; }
+            .gift-title { font-size: 1.15rem; }
+            .wp-gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.7rem; }
+            .wp-gallery-info { padding: 0.4rem 0.5rem; }
+            .wp-gallery-name { font-size: 0.7rem; }
+            .wp-gallery-desc { display: none; }
+            .wp-gallery-dl { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -1769,18 +1924,79 @@
     </footer>
 
     <!-- Gift Modal (triggered at 50% scroll) -->
+    <!-- Wallpaper Gallery Overlay -->
     <div class="gift-overlay" id="giftOverlay">
         <div class="gift-card">
             <button class="gift-close" id="giftClose" aria-label="Close">✕</button>
             <div class="gift-particles" id="giftParticles"></div>
-            <div class="gift-icon">🔥</div>
-            <h3 class="gift-title" id="giftTitle">You've reached the forge!</h3>
-            <p class="gift-subtitle" id="giftSubtitle">Loading your gift...</p>
-            <a class="gift-btn" id="giftBtn" href="#" target="_blank">
-                Claim Your Gift
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
+            <div class="gift-icon">🎁</div>
+            <h3 class="gift-title">Free BrimstoneTech Wallpapers</h3>
+            <p class="gift-subtitle">Forged in fire — click to preview, download to keep.</p>
+
+            <div class="wp-gallery-label">🖥 Desktop</div>
+            <div class="wp-gallery-grid">
+                <div class="wp-gallery-item" data-full="wallpapers/brio_orb_desktop.png">
+                    <a class="wp-gallery-dl" href="wallpapers/brio_orb_desktop.png" download title="Download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+                    <img src="wallpapers/thumbs/brio_orb_desktop_thumb.jpg" alt="BRIO Orb Desktop" loading="lazy">
+                    <div class="wp-gallery-info">
+                        <div class="wp-gallery-name">BRIO Orb</div>
+                        <div class="wp-gallery-desc">Fire neural tendrils</div>
+                    </div>
+                </div>
+                <div class="wp-gallery-item" data-full="wallpapers/brimstone_fire_abstract.png">
+                    <a class="wp-gallery-dl" href="wallpapers/brimstone_fire_abstract.png" download title="Download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+                    <img src="wallpapers/thumbs/brimstone_fire_abstract_thumb.jpg" alt="Brimstone Fire Abstract" loading="lazy">
+                    <div class="wp-gallery-info">
+                        <div class="wp-gallery-name">Brimstone Fire</div>
+                        <div class="wp-gallery-desc">Molten lava on obsidian</div>
+                    </div>
+                </div>
+                <div class="wp-gallery-item" data-full="wallpapers/neural_fire_network.png">
+                    <a class="wp-gallery-dl" href="wallpapers/neural_fire_network.png" download title="Download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+                    <img src="wallpapers/thumbs/neural_fire_network_thumb.jpg" alt="Neural Fire Network" loading="lazy">
+                    <div class="wp-gallery-info">
+                        <div class="wp-gallery-name">Neural Fire</div>
+                        <div class="wp-gallery-desc">Fire synapses & cyan nodes</div>
+                    </div>
+                </div>
+                <div class="wp-gallery-item" data-full="wallpapers/brimstone_crystals_desktop.png">
+                    <a class="wp-gallery-dl" href="wallpapers/brimstone_crystals_desktop.png" download title="Download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+                    <img src="wallpapers/thumbs/brimstone_crystals_desktop_thumb.jpg" alt="Brimstone Crystals" loading="lazy">
+                    <div class="wp-gallery-info">
+                        <div class="wp-gallery-name">Brimstone Crystals</div>
+                        <div class="wp-gallery-desc">Sulfur & cyan energy core</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wp-gallery-label">📱 Mobile</div>
+            <div class="wp-gallery-grid">
+                <div class="wp-gallery-item mobile" data-full="wallpapers/brio_orb_mobile.png">
+                    <a class="wp-gallery-dl" href="wallpapers/brio_orb_mobile.png" download title="Download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+                    <img src="wallpapers/thumbs/brio_orb_mobile_thumb.jpg" alt="BRIO Orb Mobile" loading="lazy">
+                    <div class="wp-gallery-info">
+                        <div class="wp-gallery-name">BRIO Orb</div>
+                        <div class="wp-gallery-desc">Portrait fire spirals</div>
+                    </div>
+                </div>
+                <div class="wp-gallery-item mobile" data-full="wallpapers/volcanic_horizon_mobile.png">
+                    <a class="wp-gallery-dl" href="wallpapers/volcanic_horizon_mobile.png" download title="Download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+                    <img src="wallpapers/thumbs/volcanic_horizon_mobile_thumb.jpg" alt="Volcanic Horizon Mobile" loading="lazy">
+                    <div class="wp-gallery-info">
+                        <div class="wp-gallery-name">Volcanic Horizon</div>
+                        <div class="wp-gallery-desc">Lava rivers & cyan star</div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+
+    <!-- Wallpaper Lightbox -->
+    <div class="wp-lightbox" id="wpLightbox">
+        <img id="wpLightboxImg" src="" alt="Wallpaper Preview">
+        <a class="wp-lightbox-dl" id="wpLightboxDl" href="#" download>
+            ⬇ Download Full Resolution
+        </a>
     </div>
 
     <script>
@@ -2036,6 +2252,9 @@
         (function initGiftMechanism() {
             const overlay = document.getElementById('giftOverlay');
             const closeBtn = document.getElementById('giftClose');
+            const lightbox = document.getElementById('wpLightbox');
+            const lightboxImg = document.getElementById('wpLightboxImg');
+            const lightboxDl = document.getElementById('wpLightboxDl');
             const GIFT_SHOWN_KEY = 'bt_gift_shown';
             let giftTriggered = false;
 
@@ -2054,7 +2273,7 @@
                 particleContainer.appendChild(p);
             }
 
-            // Scroll listener
+            // Scroll listener — trigger at 50%
             function onScroll() {
                 if (giftTriggered) return;
                 const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
@@ -2067,12 +2286,42 @@
             }
             window.addEventListener('scroll', onScroll);
 
-            // Close
-            closeBtn.addEventListener('click', () => {
-                overlay.classList.remove('active');
-            });
+            // Close overlay
+            closeBtn.addEventListener('click', () => overlay.classList.remove('active'));
             overlay.addEventListener('click', (e) => {
                 if (e.target === overlay) overlay.classList.remove('active');
+            });
+
+            // Click gallery item → open lightbox preview
+            document.querySelectorAll('.wp-gallery-item').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    // Don't open lightbox if they clicked the download button
+                    if (e.target.closest('.wp-gallery-dl')) return;
+                    const fullSrc = item.getAttribute('data-full');
+                    lightboxImg.src = fullSrc;
+                    lightboxDl.href = fullSrc;
+                    lightbox.classList.add('active');
+                });
+            });
+
+            // Close lightbox
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox || e.target === lightboxImg) {
+                    lightbox.classList.remove('active');
+                    lightboxImg.src = '';
+                }
+            });
+
+            // ESC key closes lightbox or overlay
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    if (lightbox.classList.contains('active')) {
+                        lightbox.classList.remove('active');
+                        lightboxImg.src = '';
+                    } else {
+                        overlay.classList.remove('active');
+                    }
+                }
             });
         })();
     </script>
