@@ -398,7 +398,7 @@
                 An AI with curiosity, values, and a finite life it refuses to waste.
             </p>
 
-            <a href="#try" class="try-brio-btn">
+            <a href="https://huggingface.co/spaces/TaiSanTin/BRIO" target="_blank" rel="noopener" class="try-brio-btn">
                 Try BRIO Live <span class="arrow">→</span>
             </a>
         </div>
@@ -625,8 +625,7 @@
     <section id="try" class="bottom-cta">
         <h2 class="reveal"><span style="color: var(--cyan);">BRIO</span> is live. Watch it learn.</h2>
         <p class="reveal">Currently in open testing: talk to BRIO, watch it search, learn, and evolve in real time.</p>
-        <!-- PLACEHOLDER: Replace href with actual HF Space URL once deployed -->
-        <a href="#" id="tryBrioBtn" class="try-brio-btn reveal" onclick="handleTryBrio(event)">
+        <a href="https://huggingface.co/spaces/TaiSanTin/BRIO" target="_blank" rel="noopener" class="try-brio-btn reveal">
             Launch BRIO <span class="arrow">→</span>
         </a>
         <p class="reveal" style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--dim);">
@@ -663,19 +662,6 @@
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
         // Try BRIO button handler — placeholder until HF Space URL is set
-        function handleTryBrio(e) {
-            const btn = document.getElementById('tryBrioBtn');
-            const href = btn.getAttribute('href');
-            if (!href || href === '#') {
-                e.preventDefault();
-                btn.innerHTML = '🔧 Deploying soon, check back! <span class="arrow">→</span>';
-                btn.style.background = 'linear-gradient(135deg, var(--ember), var(--flame))';
-                setTimeout(() => {
-                    btn.innerHTML = 'Launch BRIO <span class="arrow">→</span>';
-                    btn.style.background = '';
-                }, 3000);
-            }
-        }
     </script>
 </body>
 </html>
