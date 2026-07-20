@@ -1,22 +1,18 @@
 <script>
-// BrimstoneTech - Strong Punchy Visual Effects
+// BrimstoneTech - Intense Originkit-inspired Effects
 (function() {
     'use strict';
 
-    function initStrongEffects() {
-
-        // === STRONG EMBER CANVAS (like your original) ===
+    // Intense Ember + Particle Sphere System
+    function createIntenseParticles() {
         const canvas = document.createElement('canvas');
-        canvas.id = 'brim-strong-embers';
+        canvas.id = 'brim-intense-particles';
         canvas.style.position = 'fixed';
-        canvas.style.top = '0';
-        canvas.style.left = '0';
-        canvas.style.width = '100%';
-        canvas.style.height = '100%';
+        canvas.style.inset = '0';
+        canvas.style.zIndex = '1';
         canvas.style.pointerEvents = 'none';
-        canvas.style.zIndex = '2';
+        canvas.style.opacity = '0.9';
         canvas.style.mixBlendMode = 'screen';
-        canvas.style.opacity = '0.85';
         document.body.appendChild(canvas);
 
         const ctx = canvas.getContext('2d');
@@ -29,30 +25,33 @@
         resize();
         window.addEventListener('resize', resize);
 
-        class StrongEmber {
+        class IntenseEmber {
             constructor() { this.reset(); }
             reset() {
                 this.x = Math.random() * canvas.width;
-                this.y = canvas.height + Math.random() * 100;
-                this.size = Math.random() * 6 + 3;
-                this.speedY = -(Math.random() * 4 + 2.5);
-                this.speedX = (Math.random() - 0.5) * 2.5;
-                this.opacity = Math.random() * 0.9 + 0.5;
-                this.hueShift = Math.random() * 30 - 15;
+                this.y = Math.random() * canvas.height * 0.8;
+                this.size = Math.random() * 9 + 4;
+                this.vx = (Math.random() - 0.5) * 4;
+                this.vy = (Math.random() - 0.5) * 4;
+                this.opacity = 1;
+                this.life = 80 + Math.random() * 60;
             }
             update() {
-                this.y += this.speedY;
-                this.x += this.speedX;
-                this.opacity -= 0.012;
+                this.x += this.vx;
+                this.y += this.vy;
+                this.vx *= 0.98;
+                this.vy *= 0.98;
+                this.opacity = this.life / 100;
                 this.size *= 0.975;
-                if (this.opacity <= 0 || this.y < -50) this.reset();
+                this.life--;
+                if (this.life <= 0) this.reset();
             }
             draw() {
                 ctx.save();
                 ctx.globalAlpha = this.opacity;
-                const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 2.8);
-                grad.addColorStop(0, `hsl(36, 100%, 85%)`);
-                grad.addColorStop(0.5, `hsl(24, 100%, 65%)`);
+                const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 3);
+                grad.addColorStop(0, '#FFEE88');
+                grad.addColorStop(0.4, '#FF5500');
                 grad.addColorStop(1, 'transparent');
                 ctx.fillStyle = grad;
                 ctx.beginPath();
@@ -62,12 +61,12 @@
             }
         }
 
-        // More aggressive particle spawn
+        // Spawn many particles
+        for (let i = 0; i < 80; i++) particles.push(new IntenseEmber());
+
         setInterval(() => {
-            for (let i = 0; i < 3; i++) {
-                if (particles.length < 120) particles.push(new StrongEmber());
-            }
-        }, 16);
+            if (particles.length < 160) particles.push(new IntenseEmber());
+        }, 18);
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -75,71 +74,78 @@
             requestAnimationFrame(animate);
         }
         animate();
+    }
 
-        // === PUNCHY CARD DISSOLVE / IGNITION ===
-        document.querySelectorAll('div, section > div, .card, article').forEach((el, index) => {
-            if (el.children.length > 0 || el.textContent.length > 30) {
-                el.style.transition = 'all 0.5s cubic-bezier(0.23,1,0.32,1)';
-                el.addEventListener('mouseenter', () => {
-                    el.style.transform = 'scale(1.04) translateY(-12px)';
-                    el.style.boxShadow = '0 0 55px rgba(248, 113, 10, 0.75)';
-                    el.style.borderColor = '#FB923C';
-                });
-                el.addEventListener('mouseleave', () => {
-                    el.style.transform = 'scale(1) translateY(0)';
-                    el.style.boxShadow = '';
-                    el.style.borderColor = '';
-                });
-            }
+    // Intense Hover Dissolve + Gravity Pull
+    function initIntenseHovers() {
+        document.querySelectorAll('div, section > *, .card, article').forEach(el => {
+            if (el.textContent.length < 10) return;
+
+            el.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s';
+            
+            el.addEventListener('mouseenter', () => {
+                el.style.transform = 'scale(1.12) translateY(-20px) rotate(1deg)';
+                el.style.boxShadow = '0 0 80px rgba(248, 113, 10, 0.9)';
+                el.style.zIndex = '10';
+            });
+            
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = 'scale(1) translateY(0) rotate(0deg)';
+                el.style.boxShadow = '';
+                el.style.zIndex = '';
+            });
         });
+    }
 
-        // === STRONG MAGNETIC + FLAME PULSE on CTAs ===
-        document.querySelectorAll('a, button').forEach(btn => {
-            if (btn.textContent.toLowerCase().includes('contact') || btn.textContent.toLowerCase().includes('talk') || btn.style.background) {
-                btn.style.transition = 'transform 0.2s';
-                btn.addEventListener('mousemove', e => {
-                    const rect = btn.getBoundingClientRect();
-                    const x = (e.clientX - rect.left - rect.width / 2) * 0.35;
-                    const y = (e.clientY - rect.top - rect.height / 2) * 0.35;
-                    btn.style.transform = `translate(${x}px, ${y}px) scale(1.08)`;
-                });
-                btn.addEventListener('mouseleave', () => {
-                    btn.style.transform = 'translate(0,0) scale(1)';
-                });
-            }
+    // Magnetic + Flame Pulse CTAs
+    function initPunchyCTAs() {
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mousemove', e => {
+                const rect = el.getBoundingClientRect();
+                const x = (e.clientX - rect.left - rect.width / 2) * 0.45;
+                const y = (e.clientY - rect.top - rect.height / 2) * 0.45;
+                el.style.transform = `translate(${x}px, ${y}px) scale(1.15)`;
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = '';
+            });
         });
+    }
 
-        // === SCROLL IGNITION BURST ===
-        let burstDone = false;
+    // Scroll-triggered Intense Burst
+    function initScrollBurst() {
+        let fired = false;
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 450 && !burstDone) {
-                burstDone = true;
-                for (let i = 0; i < 45; i++) {
+            if (window.scrollY > window.innerHeight * 0.55 && !fired) {
+                fired = true;
+                for (let i = 0; i < 70; i++) {
                     setTimeout(() => {
-                        const burst = document.createElement('div');
-                        burst.style.position = 'fixed';
-                        burst.style.left = Math.random() * 100 + 'vw';
-                        burst.style.top = Math.random() * 60 + 'vh';
-                        burst.style.width = '8px';
-                        burst.style.height = '8px';
-                        burst.style.background = '#FBBF24';
-                        burst.style.borderRadius = '50%';
-                        burst.style.boxShadow = '0 0 20px #F59E0B';
-                        burst.style.zIndex = '9999';
-                        document.body.appendChild(burst);
-                        setTimeout(() => burst.remove(), 1800);
-                    }, i * 12);
+                        const p = document.createElement('div');
+                        p.style.position = 'fixed';
+                        p.style.left = Math.random() * 100 + 'vw';
+                        p.style.top = Math.random() * 70 + 'vh';
+                        p.style.width = '10px';
+                        p.style.height = '10px';
+                        p.style.background = '#FFAA00';
+                        p.style.borderRadius = '50%';
+                        p.style.boxShadow = '0 0 30px #FF3300';
+                        p.style.zIndex = '9999';
+                        document.body.appendChild(p);
+                        setTimeout(() => p.remove(), 2000);
+                    }, i * 8);
                 }
             }
         });
-
-        console.log('%cStrong Brimstone Effects Loaded 🔥', 'color:#FF6B00; font-weight:bold; font-size:14px;');
     }
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initStrongEffects);
-    } else {
-        initStrongEffects();
-    }
+    // Initialize everything
+    window.addEventListener('load', () => {
+        createIntenseParticles();
+        initIntenseHovers();
+        initPunchyCTAs();
+        initScrollBurst();
+        
+        console.log('%cIntense Brimstone Effects Loaded 🔥', 'color:#FF4400; font-size:15px; font-weight:bold');
+    });
 })();
 </script>
