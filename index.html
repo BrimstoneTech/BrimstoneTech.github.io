@@ -4,140 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BrimstoneTech — Software Forged in Fire</title>
+    <meta name="description" content="Isaiah Talemwa builds custom Odoo modules, Python automation systems, and practical AI integrations. Production-ready code delivered directly.">
     
-    <!-- SEO & Meta (from original) -->
-    <meta name="description" content="Custom Odoo modules, Python automation, and practical AI integrations by Isaiah Talemwa. Software forged in fire.">
     <link rel="icon" href="favicon.ico">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
     
     <style>
         :root {
             --ember: #E8710A;
             --flame: #F59E0B;
-            --gold: #FBBF24;
             --charcoal: #0D0B0A;
-            --smoke: #2A2320;
             --warm-white: #F5F0EB;
-            --warm-gray: #A89B8C;
+            --gray: #A89B8C;
         }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin:0; padding:0; box-sizing:border-box; }
         body {
             font-family: 'Inter', system-ui, sans-serif;
             background: var(--charcoal);
             color: var(--warm-white);
-            line-height: 1.6;
-            overflow-x: hidden;
+            line-height: 1.7;
         }
+        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; line-height: 1.1; }
         
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
-            left: 0;
             width: 100%;
-            z-index: 1000;
-            padding: 1.2rem 5%;
+            padding: 1.25rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.4s ease;
-            background: rgba(13, 11, 10, 0.95);
+            background: rgba(13,11,10,0.95);
             backdrop-filter: blur(12px);
+            z-index: 1000;
         }
-        .logo {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-            text-decoration: none;
-        }
+        .logo { font-size: 1.6rem; color: white; text-decoration: none; }
         .logo span { color: var(--ember); }
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-        .nav-links a {
-            color: var(--warm-gray);
-            text-decoration: none;
-            font-weight: 500;
-        }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a { color: var(--gray); text-decoration: none; font-weight: 500; }
         .nav-links a:hover { color: white; }
         .cta {
             background: var(--ember);
-            color: var(--charcoal);
-            padding: 0.7rem 1.8rem;
-            border-radius: 50px;
+            color: #111;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s;
-        }
-        .cta:hover {
-            background: var(--flame);
-            transform: translateY(-3px);
         }
 
-        /* Hero with particles */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
             text-align: center;
+            position: relative;
             padding: 0 5%;
-            overflow: hidden;
         }
-        #particle-canvas {
+        .hero::before {
+            content: '';
             position: absolute;
             inset: 0;
+            background: radial-gradient(circle at center, rgba(232,113,10,0.12) 0%, transparent 70%);
             z-index: 0;
-            pointer-events: none;
         }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-        }
+        .hero-content { position: relative; z-index: 1; max-width: 820px; }
         .hero h1 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(3rem, 8vw, 6rem);
-            line-height: 1.05;
-            margin-bottom: 1.5rem;
+            font-size: clamp(3.2rem, 7vw, 5.8rem);
+            margin-bottom: 1.25rem;
         }
-        .gradient {
-            background: linear-gradient(90deg, var(--ember), var(--flame), var(--gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .hero .tag { color: var(--ember); font-weight: 600; letter-spacing: 3px; margin-bottom: 1rem; display: inline-block; }
 
-        /* Cards */
-        .card {
-            background: #1A1110;
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid rgba(232,113,10,0.15);
-            transition: all 0.5s cubic-bezier(0.23,1,0.32,1);
-        }
-        .card:hover {
-            transform: translateY(-12px) rotateX(5deg) rotateY(8deg);
-            border-color: var(--ember);
-            box-shadow: 0 25px 50px rgba(232,113,10,0.25);
-        }
-
-        section { padding: 6rem 5%; }
+        section { padding: 7rem 5% 6rem; }
         .section-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             text-align: center;
             margin-bottom: 3rem;
         }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2.5rem;
+        }
+        .card {
+            background: #1A1110;
+            padding: 2.25rem;
+            border-radius: 16px;
+            border: 1px solid rgba(232,113,10,0.15);
+            transition: all 0.4s ease;
+        }
+        .card:hover {
+            border-color: var(--ember);
+            transform: translateY(-8px);
+        }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
+        footer {
+            background: #0A0706;
+            padding: 4rem 5%;
+            text-align: center;
+            color: var(--gray);
         }
     </style>
 </head>
@@ -148,86 +113,92 @@
     <ul class="nav-links">
         <li><a href="#services">Services</a></li>
         <li><a href="#work">Work</a></li>
-        <li><a href="#forge">The Forge</a></li>
+        <li><a href="#forge">Projects</a></li>
         <li><a href="#about">About</a></li>
     </ul>
-    <a href="mailto:brimstonetech1@gmail.com" class="cta">Let's Build</a>
+    <a href="mailto:brimstonetech1@gmail.com" class="cta">Get in Touch</a>
 </nav>
 
 <section class="hero">
-    <canvas id="particle-canvas"></canvas>
     <div class="hero-content">
-        <p style="color:var(--ember); font-weight:600; letter-spacing:4px; margin-bottom:1rem;">AVAILABLE FOR PROJECTS</p>
-        <h1>Software <span class="gradient">Forged in Fire</span></h1>
-        <p style="font-size:1.3rem; max-width:620px; margin:0 auto 2.5rem; color:var(--warm-gray);">
-            Custom Odoo • Python Automation • Practical AI<br>
-            Built by Isaiah Talemwa — clean code that actually works.
+        <div class="tag">AVAILABLE FOR SELECT PROJECTS</div>
+        <h1>Software Forged in Fire</h1>
+        <p style="font-size:1.35rem; color:#C8B8A8; max-width:620px; margin:0 auto;">
+            I build reliable Odoo solutions, Python automation systems, and practical AI tools.<br>
+            Direct collaboration. Production-grade delivery.
         </p>
-        <a href="#services" class="cta" style="font-size:1.1rem; padding:1rem 2.5rem;">Explore My Work</a>
+        <a href="#services" style="margin-top:2.5rem; display:inline-block;" class="cta">See What I Build</a>
     </div>
 </section>
 
 <section id="services">
-    <h2 class="section-title">What I Build</h2>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px,1fr)); gap:2rem;">
-        <div class="card"><h3>⚙️ Custom Odoo Development</h3><p>Bespoke modules, subscriptions, portals.</p></div>
-        <div class="card"><h3>🐍 Python Automation</h3><p>Data pipelines, scraping, integrations.</p></div>
-        <div class="card"><h3>🤖 AI Integration</h3><p>Practical GPT workflows and intelligence.</p></div>
-        <div class="card"><h3>🏗️ ERP Implementation</h3><p>Full Odoo setup and support.</p></div>
+    <h2 class="section-title">Core Capabilities</h2>
+    <div class="grid">
+        <div class="card">
+            <h3 style="margin-bottom:1rem;">Custom Odoo Development</h3>
+            <p>Bespoke modules for Odoo Community and Enterprise. Subscription management, portal improvements, workflow automation, and full documentation.</p>
+        </div>
+        <div class="card">
+            <h3 style="margin-bottom:1rem;">Python Automation</h3>
+            <p>Data pipelines, API integrations, reporting, and web scraping. I turn repetitive manual work into reliable automated systems.</p>
+        </div>
+        <div class="card">
+            <h3 style="margin-bottom:1rem;">AI Integration</h3>
+            <p>Targeted AI solutions including document processing, customer workflows, and decision support that integrate into your existing tools.</p>
+        </div>
+        <div class="card">
+            <h3 style="margin-bottom:1rem;">Odoo ERP Implementation</h3>
+            <p>Complete setup, data migration, user training, and ongoing support for both Community and Enterprise editions.</p>
+        </div>
     </div>
 </section>
 
-<!-- Add more sections (Featured Work, The Forge, About, Contact) as needed from your original -->
+<section id="work" style="background:#1A1110;">
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>FlexiRenew — Subscription Management</h3>
+            <p>Enterprise-grade subscription engine for Odoo Community. Live MRR/ARR tracking, automated invoicing, and customer portal. Published on Odoo App Store.</p>
+            <a href="https://apps.odoo.com/apps/modules/17.0/flexirenew" style="color:var(--ember); margin-top:1rem; display:inline-block;">View on Odoo Store →</a>
+        </div>
+        <div class="card">
+            <h3>Brim Portal Balance</h3>
+            <p>Clear outstanding balance banner in the customer portal to improve payment timeliness.</p>
+            <a href="https://github.com/BrimstoneTech/brim-portal-balance" style="color:var(--ember);">GitHub →</a>
+        </div>
+    </div>
+</section>
 
-<footer style="text-align:center; padding:4rem; background:#0A0706;">
-    <p><a href="mailto:brimstonetech1@gmail.com" style="color:var(--ember);">brimstonetech1@gmail.com</a></p>
-    <p style="margin-top:2rem; opacity:0.6;">© BrimstoneTech • Forged in Fire</p>
+<section id="forge">
+    <h2 class="section-title">Current Projects</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>BRIO</h3>
+            <p>Sentient AI companion capable of web search, self-learning, and generational evolution.</p>
+            <a href="brio.html" style="color:var(--ember);">Learn more →</a>
+        </div>
+        <!-- Add more as needed -->
+    </div>
+</section>
+
+<section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div style="max-width:680px; margin:0 auto; text-align:center;">
+        <p style="font-size:1.2rem;">
+            I'm Isaiah Talemwa, a developer specializing in Odoo and Python. 
+            I write clean, maintainable code and deliver working software directly — no layers, no handoffs.
+        </p>
+        <p style="margin-top:2rem;">
+            Day job: Enterprise Odoo development.<br>
+            Side work: Building the tools I wish existed.
+        </p>
+    </div>
+</section>
+
+<footer>
+    <p>brimstonetech1@gmail.com</p>
+    <p style="margin-top:2rem; opacity:0.6;">© 2026 BrimstoneTech</p>
 </footer>
 
-<script>
-    // Ember Particle System (OriginKit-style)
-    const canvas = document.getElementById('particle-canvas');
-    const ctx = canvas.getContext('2d');
-    
-    function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    let particles = [];
-    class Particle {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = canvas.height + 20;
-            this.size = Math.random() * 5 + 2;
-            this.speed = Math.random() * 2.5 + 1;
-        }
-        update() {
-            this.y -= this.speed;
-            this.size *= 0.98;
-        }
-        draw() {
-            ctx.fillStyle = '#F59E0B';
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fill();
-        }
-    }
-
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        if (Math.random() < 0.4) particles.push(new Particle());
-        
-        for (let i = particles.length - 1; i >= 0; i--) {
-            particles[i].update();
-            particles[i].draw();
-            if (particles[i].size < 0.5) particles.splice(i, 1);
-        }
-        requestAnimationFrame(animate);
-    }
-    animate();
-</script>
 </body>
 </html>
