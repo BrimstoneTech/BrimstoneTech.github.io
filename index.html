@@ -26,7 +26,7 @@
     <meta property="og:site_name" content="BrimstoneTech">
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="BrimstoneTech — Software Forged in Fire">
     <meta name="twitter:description" content="Custom Odoo modules, Python automation, and AI integrations.">
     <meta name="twitter:image" content="https://brimstonetech.github.io/icon-512.png">
@@ -43,7 +43,10 @@
         "sameAs": ["https://github.com/BrimstoneTech"],
         "serviceType": ["Odoo Development", "Python Automation", "AI Integration", "ERP Consulting"],
         "areaServed": "Worldwide",
-        "priceRange": "$$"
+        "priceRange": "$$",
+        "founder": {"@type": "Person", "name": "Isaiah Talemwa", "jobTitle": "Software Engineer", "sameAs": "https://linkedin.com/in/isaiah-talemwa-774421360"},
+        "address": {"@type": "PostalAddress", "addressLocality": "Kampala", "addressCountry": "UG"},
+        "email": "brimstonetech1@gmail.com"
     }
     </script>
     <meta name="description" content="BrimstoneTech builds custom Odoo modules, Python automation, and AI integrations. Software engineering that burns through complexity.">
@@ -1582,6 +1585,78 @@
             .wp-gallery-desc { display: none; }
             .wp-gallery-dl { opacity: 1; transform: translateY(0); }
         }
+
+        /* ═══ CONTACT BRIEF + MERCH ═══ */
+        .brim-form {
+            max-width: 520px;
+            margin: 2.5rem auto 0;
+            display: grid;
+            gap: .75rem;
+            text-align: left;
+        }
+
+        .brim-form input,
+        .brim-form select,
+        .brim-form textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--ash);
+            border: 1px solid var(--smoke);
+            border-radius: 12px;
+            color: var(--warm-white);
+            font-family: 'Inter', sans-serif;
+            font-size: .95rem;
+            outline: none;
+            transition: border-color .2s, box-shadow .2s;
+        }
+
+        .brim-form input::placeholder,
+        .brim-form textarea::placeholder {
+            color: var(--dim);
+        }
+
+        .brim-form input:focus,
+        .brim-form select:focus,
+        .brim-form textarea:focus {
+            border-color: var(--ember);
+            box-shadow: 0 0 0 3px var(--glow);
+        }
+
+        .brim-form-note {
+            font-size: .8rem;
+            color: var(--dim);
+            text-align: center;
+            margin-top: .25rem;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .merch-grid {
+            margin-top: 2rem;
+        }
+
+        .merch-badge {
+            margin-bottom: .75rem;
+        }
+
+        .brim-form-submit {
+            width: 100%;
+            justify-content: center;
+        }
+
+        #merch .work-card-small h4 {
+            margin-bottom: .5rem;
+        }
     </style>
 </head>
 <body>
@@ -1600,6 +1675,7 @@
             <li><a href="brio.html">BRIO</a></li>
             <li><a href="#coming-soon">Coming Soon</a></li>
             <li><a href="#about">About</a></li>
+            <li><a href="merch.html">Merch</a></li>
             <li><a href="#contact" class="nav-cta">Get In Touch</a></li>
         </ul>
         <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
@@ -1785,6 +1861,34 @@
         </div>
     </section>
 
+    <!-- Merch teaser -->
+    <section id="merch">
+        <div class="section-container">
+            <div class="section-label reveal">The Forge Shop</div>
+            <h2 class="section-title reveal stagger-1">Wear the fire</h2>
+            <p class="section-subtitle reveal stagger-2">Two lines: <strong>Forge Crew</strong> for the team, <strong>Ember Line</strong> for everyone else. Heavyweight blanks, ember-on-black prints, made in limited drops.</p>
+
+            <div class="work-grid-small merch-grid">
+                <div class="work-card-small reveal stagger-1">
+                    <div class="work-badge merch-badge">Ember Line</div>
+                    <h4>Tees, jumpers &amp; caps</h4>
+                    <p>&ldquo;Software Forged in Fire&rdquo; graphics, the hexagon flame mark, and code-motif prints. Public drop — buy or gift.</p>
+                    <a href="merch.html" class="work-link">See the drop
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+                <div class="work-card-small reveal stagger-2">
+                    <div class="work-badge merch-badge">Forge Crew</div>
+                    <h4>Team-only kit</h4>
+                    <p>Matte black, tonal black-on-black lettering, embroidered mark, numbered sleeve. Not for sale — earned.</p>
+                    <a href="merch.html#crew" class="work-link">How to earn it
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Coming Soon -->
     <section id="coming-soon">
         <div class="section-container">
@@ -1888,6 +1992,26 @@
                 brimstonetech1@gmail.com
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
+
+            <form id="projectBriefForm" class="brim-form reveal stagger-3" action="mailto:brimstonetech1@gmail.com" method="GET" enctype="text/plain">
+                <label class="sr-only" for="briefName">Your name</label>
+                <input id="briefName" type="text" name="name" placeholder="Your name" autocomplete="name" required>
+                <label class="sr-only" for="briefEmail">Work email</label>
+                <input id="briefEmail" type="email" name="email" placeholder="Work email" autocomplete="email" required>
+                <label class="sr-only" for="briefNeed">What do you need?</label>
+                <select id="briefNeed" name="need" required>
+                    <option value="" disabled selected>What do you need?</option>
+                    <option>Custom Odoo module</option>
+                    <option>Odoo implementation / migration</option>
+                    <option>Python automation</option>
+                    <option>AI integration</option>
+                    <option>Something else</option>
+                </select>
+                <label class="sr-only" for="briefDetails">Project brief</label>
+                <textarea id="briefDetails" name="brief" rows="4" placeholder="One paragraph on the problem. What does it cost you today?" required></textarea>
+                <button type="submit" class="btn-primary brim-form-submit">Send the brief</button>
+                <p class="brim-form-note">Opens your email app with the brief addressed to Isaiah.</p>
+            </form>
             <div class="contact-methods reveal stagger-4">
                 <a href="https://github.com/BrimstoneTech" class="contact-pill" target="_blank">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -2363,6 +2487,24 @@
                 }
             });
         })();
+
+        // Build a readable project brief before opening the visitor's email app.
+        const projectBriefForm = document.getElementById('projectBriefForm');
+        if (projectBriefForm) {
+            projectBriefForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const data = new FormData(projectBriefForm);
+                const body = [
+                    `Name: ${data.get('name')}`,
+                    `Email: ${data.get('email')}`,
+                    `Need: ${data.get('need')}`,
+                    '',
+                    'Project brief:',
+                    data.get('brief')
+                ].join('\n');
+                window.location.href = `mailto:brimstonetech1@gmail.com?subject=${encodeURIComponent('BrimstoneTech project brief')}&body=${encodeURIComponent(body)}`;
+            });
+        }
     </script>
     <script src="brim-effects.js"></script>
 </body>
