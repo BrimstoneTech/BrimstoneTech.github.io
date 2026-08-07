@@ -226,17 +226,6 @@
             overflow: hidden;
         }
 
-        /* Ember particle canvas */
-        #ember-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
         /* Radial glow behind hero text */
         .hero::before {
             content: '';
@@ -1653,7 +1642,6 @@
 
         /* Restrained effects: atmosphere belongs to the hero, never over content. */
         .hero::before { background: radial-gradient(ellipse, rgba(232, 113, 10, 0.055) 0%, transparent 67%); }
-        #ember-canvas { opacity: .42; }
         .contact-glow {
             width: min(480px, 100%);
             height: 420px;
@@ -1686,14 +1674,13 @@
         }
         .brim-card-active { border-color: rgba(232, 113, 10, .24) !important; }
         @media (max-width: 768px) {
-            #ember-canvas { opacity: .24; }
             .scroll-indicator { animation: none; }
             .about-layout > * { min-width: 0; }
             .reveal-left, .reveal-right { transform: translateY(24px); }
         }
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-            #ember-canvas, .brim-section-embers { display: none; }
+            .brim-section-embers { display: none; }
         }
     </style>
 </head>
@@ -1724,7 +1711,6 @@
 
     <!-- Hero -->
     <section class="hero" id="hero">
-        <canvas id="ember-canvas"></canvas>
         <div class="hero-content">
             <div class="hero-tag">
                 Available for projects
@@ -2117,75 +2103,6 @@
     <!-- Wallpaper giveaway removed: the site now keeps the path to project work uninterrupted. -->
 
     <script>
-        // ═══════════════════════════════════════
-        // EMBER PARTICLES
-        // ═══════════════════════════════════════
-        const heroCanvas = document.getElementById('ember-canvas');
-        const heroCtx = heroCanvas.getContext('2d');
-        let heroParticles = [];
-
-        function resizeCanvas() {
-            heroCanvas.width = window.innerWidth;
-            heroCanvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        class Ember {
-            constructor() {
-                this.reset();
-            }
-            reset() {
-                this.x = Math.random() * heroCanvas.width;
-                this.y = heroCanvas.height + 10;
-                this.size = Math.random() * 1.2 + 0.35;
-                this.speedY = -(Math.random() * 0.35 + 0.15);
-                this.speedX = (Math.random() - 0.5) * 0.16;
-                this.opacity = Math.random() * 0.24 + 0.08;
-                this.fadeRate = Math.random() * 0.0015 + 0.0007;
-                this.wobble = Math.random() * Math.PI * 2;
-                this.wobbleSpeed = Math.random() * 0.02 + 0.01;
-            }
-            update() {
-                this.y += this.speedY;
-                this.wobble += this.wobbleSpeed;
-                this.x += this.speedX + Math.sin(this.wobble) * 0.3;
-                this.opacity -= this.fadeRate;
-                this.size *= 0.999;
-                if (this.opacity <= 0 || this.y < -10) this.reset();
-                      }
-            draw() {
-                heroCtx.save();
-                heroCtx.globalAlpha = this.opacity;
-                heroCtx.beginPath();
-                heroCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                const gradient = heroCtx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
-                gradient.addColorStop(0, '#FBBF24');
-                gradient.addColorStop(0.5, '#E8710A');
-                gradient.addColorStop(1, 'transparent');
-                heroCtx.fillStyle = gradient;
-                heroCtx.fill();
-                heroCtx.restore();
-            }
-        }
-
-        // Create particles
-        for (let i = 0; i < (window.innerWidth < 700 ? 10 : 18); i++) {
-            const p = new Ember();
-            p.y = Math.random() * heroCanvas.height; // start scattered
-            heroParticles.push(p);
-        }
-
-        function animateEmbers() {
-            heroCtx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
-            heroParticles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            requestAnimationFrame(animateEmbers);
-        }
-        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) animateEmbers();
-
         // ═══════════════════════════════════════
         // MOCKUP CHART BARS
         // ═══════════════════════════════════════
