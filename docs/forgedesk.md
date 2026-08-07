@@ -47,10 +47,12 @@ All money values are rounded to 2 decimals at each step. UGX and KES display wit
 
 ## Limitations / not included
 
-- **Not a fiscal invoice.** Output is not issued through EFRIS, has no URA fiscal
-  document number, QR code or verification code. VAT-registered Ugandan taxpayers must
-  still issue the corresponding EFRIS e-invoice/e-receipt and follow all URA rules.
-  ForgeDesk output is a commercial quotation or working draft.
+- **Not an EFRIS fiscal document.** Output has no URA fiscal document number,
+  verification code or QR code. VAT-registered taxpayers must use EFRIS. URA has
+  also extended mandatory EFRIS use to specified non-VAT sectors, including ICT,
+  subject to the applicable turnover rules. ForgeDesk output is a quotation,
+  proforma or branded supporting copy; fiscalise the actual sale through EFRIS.
+  Verify the current rules at `https://ura.go.ug/en/efris/` before first use.
 - No legal, tax or accounting advice. Not accounting software. No ledger, no payment
   tracking, no partial payments, no credit notes, no withholding tax, no multi-rate tax
   per line (one rate per document), no FX conversion.

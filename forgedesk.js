@@ -317,8 +317,8 @@
             `<section><h3>${esc(title)}</h3><p>${escLines(body)}</p></section>`).join("");
 
         $("#pvEfris").textContent = doc.taxEnabled
-            ? "Not a fiscal invoice. This document is not issued through EFRIS and has no URA fiscal document number or verification code. VAT-registered taxpayers must issue the corresponding EFRIS e-invoice/e-receipt."
-            : "Not a fiscal invoice. This document is not issued through EFRIS. No tax has been applied to this document.";
+            ? "Not an EFRIS fiscal document. It has no URA-issued FDN, verification code or QR code. Fiscalise the transaction separately through EFRIS where required."
+            : "Not an EFRIS fiscal document. No tax has been applied here; fiscalise the transaction separately through EFRIS where required.";
 
         renderWarning(doc);
     }
