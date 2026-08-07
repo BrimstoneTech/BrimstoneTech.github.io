@@ -76,10 +76,10 @@
             shipping: 0,
             seller: {
                 name: "BrimstoneTech",
-                contact: "Isaiah Talemwa",
+                contact: "TAISAN — Isaiah Talemwa",
                 email: "brimstonetech1@gmail.com",
                 phone: "",
-                address: "",
+                address: "Kampala, Uganda",
                 reg: "",
                 tin: "",
                 website: "https://brimstonetech.github.io"

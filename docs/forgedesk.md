@@ -8,8 +8,10 @@ dependency (only the Google Fonts stylesheet and `logo.png`, same as the rest of
 
 1. Open `forgedesk.html` in a browser (or `https://brimstonetech.github.io/forgedesk.html`
    once deployed).
-2. Fill in the **Seller** card. `Business registration no.`, `TIN` and `Address` ship
-   blank on purpose — enter your own real values. Until every required field is filled,
+2. The **Seller** card starts with `BrimstoneTech`, `TAISAN — Isaiah Talemwa`,
+   `brimstonetech1@gmail.com`, `Kampala, Uganda` and the official website.
+   `Business registration no.` and `TIN` remain blank on purpose — enter only official
+   values once issued. Until every required field is filled,
    an ember setup warning shows at the top and the preview is stamped
    `DRAFT — SETUP INCOMPLETE`.
 3. Pick **Quotation** or **Invoice**. Switching regenerates the document number
@@ -37,6 +39,8 @@ All money values are rounded to 2 decimals at each step. UGX and KES display wit
 ## Storage & privacy
 
 - Everything lives in `localStorage` under `brimstone.forgedesk.v1`. Nothing is uploaded.
+- The deployment is unlisted, not authenticated: anyone with the direct URL can open a
+  fresh copy, but browser-local documents are not visible to other visitors.
 - Multiple documents supported: open, duplicate, delete from the saved-documents list.
 - **Export JSON** writes `forgedesk-YYYY-MM-DD.json` (all documents) — the only real backup.
 - **Import JSON** appends documents, re-issuing IDs on collision. Malformed files are

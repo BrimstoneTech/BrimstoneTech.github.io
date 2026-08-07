@@ -17,7 +17,7 @@
 <header class="site-bar no-print">
     <div class="wrap bar-inner">
         <a class="brand" href="index.html"><img src="logo.png" alt="BrimstoneTech logo">Brimstone<span>Tech</span></a>
-        <p class="bar-tag">ForgeDesk · internal preview</p>
+        <p class="bar-tag">ForgeDesk · TAISAN billing desk</p>
     </div>
 </header>
 
@@ -26,7 +26,7 @@
         <div class="wrap">
             <p class="eyebrow">Quotation &amp; invoice builder · Browser only</p>
             <h1>Write a quote, turn it into an <em>invoice</em>, print it.</h1>
-            <p class="intro-copy">Everything runs in this tab. No account, no server, no third-party scripts. Fill in your registration details once and they are reused on every document you build.</p>
+            <p class="intro-copy">Everything runs in this tab. No account, no server, no analytics. BrimstoneTech's verified seller details are pre-filled; add the registration number and TIN when they are issued.</p>
         </div>
     </section>
 
@@ -35,7 +35,7 @@
         <div id="setupWarning" class="alert alert-warn no-print" role="alert" hidden>
             <h2>Setup incomplete — do not send this document yet</h2>
             <p>These seller fields are still empty: <strong id="setupMissing">—</strong>.</p>
-            <p>ForgeDesk ships with no legal registration number, TIN or registered-office address on purpose. Enter your own real values after registration. Never invent them.</p>
+            <p>BrimstoneTech's registration number and TIN are still pending. Kampala, Uganda is the approved public location, not a complete registered-office address. Enter only official values after they are issued—never invent them.</p>
             <button type="button" class="button secondary" data-jump="sellerCard">Go to seller details</button>
         </div>
 
@@ -45,8 +45,8 @@
         </div>
 
         <div class="alert alert-privacy no-print" role="note">
-            <h2>Data privacy</h2>
-            <p>Your documents are stored only in this browser's <code>localStorage</code>, under the key <code>brimstone.forgedesk.v1</code>. Nothing is uploaded, no analytics run on this page, and no request leaves your device except the Google Fonts stylesheet and the logo image. Clearing site data, using a different browser or a private window means the documents are gone. Use <strong>Export JSON</strong> for real backups. On a shared computer, use <strong>Delete all data</strong> when you are done.</p>
+            <h2>Access &amp; data privacy</h2>
+            <p>This is an unlisted direct-link tool, not a password-protected account. Anyone with the URL can open a blank copy, but they cannot see documents stored in your browser. Your documents live only in this browser's <code>localStorage</code>; no document data is uploaded and no analytics run. Clearing site data, switching browsers/devices or using a private window means the documents are gone. Use <strong>Export JSON</strong> for backups and <strong>Delete all data</strong> on shared computers.</p>
         </div>
 
         <!-- ======================= TOOLBAR ======================= -->
@@ -72,7 +72,7 @@
             <div class="editor no-print">
                 <section class="card" id="sellerCard" tabindex="-1">
                     <h2>Seller (you)</h2>
-                    <p class="card-hint">Required fields are marked. Registration number, TIN and address are intentionally blank.</p>
+                    <p class="card-hint">Verified seller details are pre-filled. Registration number and TIN remain blank until officially issued.</p>
                     <div class="field-grid">
                         <label><span class="lbl">Business name <span class="req">*</span></span><input id="sellerName" data-doc="seller.name" autocomplete="organization"></label>
                         <label>Contact person<input id="sellerContact" data-doc="seller.contact" autocomplete="name"></label>
