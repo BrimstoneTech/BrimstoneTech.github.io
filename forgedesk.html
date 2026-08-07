@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ForgeDesk — Quotation &amp; Invoice Builder by BrimstoneTech</title>
+<meta name="description" content="Build quotations and invoices in your browser. Line items, discounts, configurable VAT, totals, print to PDF. Nothing leaves your device.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="forgedesk.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<header class="site-bar no-print">
+    <div class="wrap bar-inner">
+        <a class="brand" href="index.html"><img src="logo.png" alt="BrimstoneTech logo">Brimstone<span>Tech</span></a>
+        <p class="bar-tag">ForgeDesk · internal preview</p>
+    </div>
+</header>
+
+<main>
+    <section class="intro no-print">
+        <div class="wrap">
+            <p class="eyebrow">Quotation &amp; invoice builder · Browser only</p>
+            <h1>Write a quote, turn it into an <em>invoice</em>, print it.</h1>
+            <p class="intro-copy">Everything runs in this tab. No account, no server, no third-party scripts. Fill in your registration details once and they are reused on every document you build.</p>
+        </div>
+    </section>
+
+    <div class="wrap layout">
+        <!-- ======================= SETUP WARNING ======================= -->
+        <div id="setupWarning" class="alert alert-warn no-print" role="alert" hidden>
+            <h2>Setup incomplete — do not send this document yet</h2>
+            <p>These seller fields are still empty: <strong id="setupMissing">—</strong>.</p>
+            <p>ForgeDesk ships with no legal registration number, TIN or postal address on purpose. Enter your own real values from your certificate of incorporation and URA records. Never invent them.</p>
+            <button type="button" class="button secondary" data-jump="sellerCard">Go to seller details</button>
+        </div>
+
+        <div class="alert alert-info no-print" role="note">
+            <h2>EFRIS / URA notice</h2>
+            <p>A document produced here is <strong>not a fiscal invoice</strong>. It is not issued through EFRIS and carries no fiscal document number, QR code or URA verification code. If you are VAT-registered in Uganda you must still issue the corresponding e-invoice/e-receipt through EFRIS and follow all Uganda Revenue Authority requirements. Use ForgeDesk output as a commercial quotation or a working draft only.</p>
+        </div>
+
+        <div class="alert alert-privacy no-print" role="note">
+            <h2>Data privacy</h2>
+            <p>Your documents are stored only in this browser's <code>localStorage</code>, under the key <code>brimstone.forgedesk.v1</code>. Nothing is uploaded, no analytics run on this page, and no request leaves your device except the Google Fonts stylesheet and the logo image. Clearing site data, using a different browser or a private window means the documents are gone. Use <strong>Export JSON</strong> for real backups. On a shared computer, use <strong>Delete all data</strong> when you are done.</p>
+        </div>
+
+        <!-- ======================= TOOLBAR ======================= -->
+        <div class="toolbar no-print">
+            <div class="doc-switch" role="group" aria-label="Document type">
+                <button type="button" id="typeQuote" class="chip" aria-pressed="true" data-type="quotation">Quotation</button>
+                <button type="button" id="typeInvoice" class="chip" aria-pressed="false" data-type="invoice">Invoice</button>
+            </div>
+            <div class="toolbar-actions">
+                <button type="button" class="button primary" id="btnPrint">Print / Save PDF</button>
+                <button type="button" class="button secondary" id="btnNew">New document</button>
+                <button type="button" class="button secondary" id="btnDuplicate">Duplicate</button>
+                <button type="button" class="button secondary" id="btnExport">Export JSON</button>
+                <button type="button" class="button secondary" id="btnImport">Import JSON</button>
+                <button type="button" class="button danger" id="btnWipe">Delete all data</button>
+                <input type="file" id="importFile" accept="application/json,.json" hidden>
+            </div>
+            <p class="save-state" id="saveState" role="status" aria-live="polite">Ready.</p>
+        </div>
+
+        <div class="grid-main">
+            <!-- ======================= EDITOR ======================= -->
+            <div class="editor no-print">
+                <section class="card" id="sellerCard" tabindex="-1">
+                    <h2>Seller (you)</h2>
+                    <p class="card-hint">Required fields are marked. Registration number, TIN and address are intentionally blank.</p>
+                    <div class="field-grid">
+                        <label><span class="lbl">Business name <span class="req">*</span></span><input id="sellerName" data-doc="seller.name" autocomplete="organization"></label>
+                        <label>Contact person<input id="sellerContact" data-doc="seller.contact" autocomplete="name"></label>
+                        <label><span class="lbl">Email <span class="req">*</span></span><input id="sellerEmail" type="email" data-doc="seller.email" autocomplete="email"></label>
+                        <label>Phone<input id="sellerPhone" data-doc="seller.phone" autocomplete="tel"></label>
+                        <label class="span2"><span class="lbl">Address <span class="req">*</span></span><textarea id="sellerAddress" rows="2" data-doc="seller.address" placeholder="Street, building, city, country"></textarea></label>
+                        <label><span class="lbl">Business registration no. <span class="req">*</span></span><input id="sellerReg" data-doc="seller.reg" placeholder="Enter your own registration number"></label>
+                        <label><span class="lbl">TIN <span class="req">*</span></span><input id="sellerTin" data-doc="seller.tin" placeholder="Enter your own TIN"></label>
+                        <label class="span2">Website<input id="sellerWeb" data-doc="seller.website"></label>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h2>Client</h2>
+                    <div class="field-grid">
+                        <label><span class="lbl">Client name <span class="req">*</span></span><input id="clientName" data-doc="client.name"></label>
+                        <label>Attention / contact<input id="clientContact" data-doc="client.contact"></label>
+                        <label>Email<input id="clientEmail" type="email" data-doc="client.email"></label>
+                        <label>Phone<input id="clientPhone" data-doc="client.phone"></label>
+                        <label class="span2">Address<textarea id="clientAddress" rows="2" data-doc="client.address"></textarea></label>
+                        <label>Client TIN<input id="clientTin" data-doc="client.tin"></label>
+                        <label>Reference / PO no.<input id="clientRef" data-doc="client.ref"></label>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h2>Document</h2>
+                    <div class="field-grid">
+                        <label>Document number<input id="docNumber" data-doc="number"></label>
+                        <label>Currency
+                            <select id="currency" data-doc="currency">
+                                <option value="UGX">UGX — Uganda Shilling</option>
+                                <option value="USD">USD — US Dollar</option>
+                                <option value="EUR">EUR — Euro</option>
+                                <option value="GBP">GBP — Pound Sterling</option>
+                                <option value="KES">KES — Kenya Shilling</option>
+                            </select>
+                        </label>
+                        <label>Issue date<input id="issueDate" type="date" data-doc="issueDate"></label>
+                        <label><span id="dueLabel">Valid until</span><input id="dueDate" type="date" data-doc="dueDate"></label>
+                        <label>Tax label<input id="taxLabel" data-doc="taxLabel" placeholder="VAT"></label>
+                        <label>Tax rate %<input id="taxRate" type="number" min="0" max="100" step="0.01" data-doc="taxRate"></label>
+                        <label class="check span2"><input type="checkbox" id="taxEnabled" data-doc="taxEnabled"> Apply tax to this document</label>
+                        <label class="check span2"><input type="checkbox" id="pricesIncludeTax" data-doc="pricesIncludeTax"> Unit prices already include tax</label>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h2>Line items</h2>
+                    <div class="items-head" aria-hidden="true">
+                        <span>Description</span><span>Qty</span><span>Unit price</span><span>Disc %</span><span>Amount</span><span></span>
+                    </div>
+                    <div id="itemRows"></div>
+                    <button type="button" class="button secondary" id="btnAddItem">Add line item</button>
+                    <div class="field-grid tight">
+                        <label>Document discount %<input id="docDiscount" type="number" min="0" max="100" step="0.01" data-doc="docDiscount"></label>
+                        <label>Shipping / other charge<input id="shipping" type="number" min="0" step="0.01" data-doc="shipping"></label>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h2>Notes, terms &amp; payment</h2>
+                    <div class="field-grid">
+                        <label class="span2">Notes<textarea id="notes" rows="3" data-doc="notes"></textarea></label>
+                        <label class="span2">Terms &amp; conditions<textarea id="terms" rows="4" data-doc="terms"></textarea></label>
+                        <label class="span2">Payment details<textarea id="payment" rows="4" data-doc="payment" placeholder="Bank, account name, account number, mobile money"></textarea></label>
+                    </div>
+                </section>
+
+                <section class="card">
+                    <h2>Saved documents (<span id="docCount">0</span>)</h2>
+                    <p class="card-hint">Stored in this browser only.</p>
+                    <ul class="doc-list" id="docList"></ul>
+                </section>
+            </div>
+
+            <!-- ======================= PREVIEW ======================= -->
+            <div class="preview-col">
+                <p class="preview-label no-print">A4 preview</p>
+                <article class="sheet" id="sheet" aria-label="Document preview">
+                    <div class="sheet-draft" id="sheetDraft" hidden>DRAFT — SETUP INCOMPLETE</div>
+                    <header class="sheet-head">
+                        <div>
+                            <p class="sheet-type" id="pvType">QUOTATION</p>
+                            <p class="sheet-num" id="pvNumber"></p>
+                        </div>
+                        <div class="sheet-seller" id="pvSeller"></div>
+                    </header>
+                    <div class="sheet-meta">
+                        <div><h3>Billed to</h3><div id="pvClient"></div></div>
+                        <div><h3>Details</h3><div id="pvDates"></div></div>
+                    </div>
+                    <table class="sheet-table">
+                        <thead><tr><th class="c-desc">Description</th><th class="c-num">Qty</th><th class="c-num">Unit price</th><th class="c-num">Disc</th><th class="c-num">Amount</th></tr></thead>
+                        <tbody id="pvItems"></tbody>
+                    </table>
+                    <div class="sheet-bottom">
+                        <div class="sheet-notes" id="pvNotes"></div>
+                        <table class="sheet-totals" id="pvTotals"></table>
+                    </div>
+                    <footer class="sheet-foot">
+                        <p id="pvEfris"></p>
+                        <p class="sheet-boiler">BrimstoneTech is a Kampala-based software studio founded by Isaiah Talemwa. It builds custom Odoo modules, Python automation, and practical AI integrations.</p>
+                    </footer>
+                </article>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="site-foot no-print">
+    <div class="wrap">
+        <p>© 2025 BrimstoneTech · Kampala, Uganda · ForgeDesk runs entirely in your browser.</p>
+        <p class="foot-dim">ForgeDesk is not accounting software and gives no legal, tax or accounting advice. Verify every figure before sending a document.</p>
+    </div>
+</footer>
+
+<script src="forgedesk.js"></script>
+</body>
+</html>
