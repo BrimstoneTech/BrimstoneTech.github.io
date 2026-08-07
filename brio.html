@@ -332,6 +332,41 @@
         .stagger-3 { transition-delay: 0.3s; }
         .stagger-4 { transition-delay: 0.4s; }
 
+        /* Expressive but restrained: visual energy stays inside the BRIO hero. */
+        .brio-hero-bg {
+            background: radial-gradient(ellipse at 50% 30%, rgba(34, 211, 238, 0.055) 0%, transparent 58%),
+                        radial-gradient(ellipse at 30% 70%, rgba(232, 113, 10, 0.035) 0%, transparent 48%),
+                        var(--charcoal);
+        }
+        .orb {
+            box-shadow: 0 0 36px rgba(34, 211, 238, 0.26), 0 0 72px rgba(34, 211, 238, 0.09), inset 0 0 28px rgba(245,240,235,0.08);
+            animation: orb-breathe 6s ease-in-out infinite;
+        }
+        .orb-ring { animation-duration: 24s; }
+        .orb-ring-2 { animation-duration: 32s; }
+        .try-brio-btn { box-shadow: 0 0 20px rgba(34, 211, 238, 0.18); }
+        .try-brio-btn:hover { box-shadow: 0 0 28px rgba(34, 211, 238, 0.28); }
+        .brim-section-embers {
+            position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none;
+            -webkit-mask-image: linear-gradient(to bottom, #000 0 64%, transparent 94%);
+            mask-image: linear-gradient(to bottom, #000 0 64%, transparent 94%);
+        }
+        .brim-section-embers i {
+            position: absolute; left: var(--x); top: var(--y); width: 2px; height: 2px;
+            border-radius: 50%; background: var(--cyan); opacity: 0;
+            animation: brioQuietEmber var(--duration) ease-in-out var(--delay) infinite;
+        }
+        @keyframes brioQuietEmber {
+            0%,100% { opacity:0; transform:translate(0,8px); }
+            34% { opacity:.24; }
+            72% { opacity:.08; transform:translate(var(--drift),-30px); }
+        }
+        .brim-card-active { border-color: rgba(34,211,238,.2) !important; }
+        @media (prefers-reduced-motion: reduce) {
+            *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+            .brim-section-embers { display:none; }
+        }
+
         /* ═══ MOBILE ═══ */
         @media (max-width: 768px) {
             nav { padding: 0.8rem 1.5rem; }
@@ -362,6 +397,7 @@
         </a>
         <ul class="nav-links" id="navLinks">
             <li><a href="index.html">Home</a></li>
+            <li><a href="forgekit.html">ForgeKit</a></li>
             <li><a href="#capabilities">Capabilities</a></li>
             <li><a href="#how-it-works">How It Works</a></li>
             <li><a href="#philosophy">Philosophy</a></li>

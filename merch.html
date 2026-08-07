@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Forge Shop — BrimstoneTech Merch</title>
-<meta name="description" content="BrimstoneTech merch: Ember Line tees, jumpers and caps for everyone, Forge Crew kit for the team. Software Forged in Fire.">
+<meta name="description" content="BrimstoneTech merch: estimated launch prices for Ember Line tees, jumpers and accessories, plus Forge Crew kit for the team.">
 <link rel="canonical" href="https://brimstonetech.github.io/merch.html">
 <meta property="og:title" content="Forge Shop — BrimstoneTech Merch">
 <meta property="og:description" content="Ember Line tees, jumpers and caps. Software Forged in Fire.">
@@ -52,6 +52,7 @@ h2{font-family:'Space Grotesk',sans-serif;font-size:1.9rem;letter-spacing:-.01em
 .shop-foot{display:flex;align-items:center;justify-content:space-between;margin-top:16px;gap:10px}
 .shop-price{font-family:'Space Grotesk',sans-serif;font-weight:600}
 .shop-tag{font-size:.72rem;color:var(--dim)}
+.price-note{display:block;font-size:.65rem;color:var(--dim);font-family:'Inter',sans-serif;font-weight:500;margin-top:2px}
 .shop-btn{background:var(--ember);color:#0D0B0A;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:10px 16px;border-radius:999px;text-decoration:none}
 .shop-btn:hover{filter:brightness(1.1)}
 .panel{background:var(--ash);border:1px solid var(--smoke);border-radius:20px;padding:32px}
@@ -61,6 +62,9 @@ h2{font-family:'Space Grotesk',sans-serif;font-size:1.9rem;letter-spacing:-.01em
 .mail-btn{display:inline-block;padding:14px 18px;border-radius:999px;background:var(--ember);color:#0D0B0A;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
 .mail-btn:hover{filter:brightness(1.1)}
 .note{font-size:.8rem;color:var(--dim)}
+.pricing-note{margin-top:26px;padding:18px 20px;border:1px solid var(--smoke);border-left:2px solid var(--ember);border-radius:6px;background:var(--ash);color:var(--warm-gray);font-size:.82rem}
+.pricing-note strong{color:var(--warm-white)}
+.pricing-note a{color:var(--ember)}
 footer{border-top:1px solid var(--smoke);padding:28px 0;color:var(--dim);font-size:.82rem;text-align:center}
 @media(max-width:640px){
   header.bar .wrap{height:auto;min-height:68px;align-items:flex-start;padding-top:16px;padding-bottom:14px}
@@ -75,7 +79,7 @@ footer{border-top:1px solid var(--smoke);padding:28px 0;color:var(--dim);font-si
 <body>
 <header class="bar"><div class="wrap">
     <a class="brand" href="index.html"><img src="logo.png" alt="BrimstoneTech logo">Brimstone<span>Tech</span></a>
-    <nav aria-label="Main navigation"><a href="index.html#work">Work</a><a href="index.html#about">About</a><a href="index.html#contact">Get in touch</a></nav>
+    <nav aria-label="Main navigation"><a href="index.html#work">Work</a><a href="forgekit.html">ForgeKit</a><a href="index.html#about">About</a><a href="index.html#contact">Get in touch</a></nav>
 </div></header>
 
 <main>
@@ -87,7 +91,7 @@ footer{border-top:1px solid var(--smoke);padding:28px 0;color:var(--dim);font-si
 
 <section><div class="wrap">
     <h2>The drop</h2>
-    <p class="sub sub-left">Prototype visuals — final blanks and prices will be confirmed at the first print run.</p>
+    <p class="sub sub-left">Prototype visuals with planning prices. Final blanks and landed costs will be confirmed before the first print run.</p>
     <div class="shop-grid">
         <article class="shop-card">
             <img src="assets/merch/ember_tee_bone.webp" alt="Bone BrimstoneTech Forged in Fire tee" loading="lazy">
@@ -96,7 +100,7 @@ footer{border-top:1px solid var(--smoke);padding:28px 0;color:var(--dim);font-si
                 <h3>Forged in Fire tee</h3>
                 <p>Bone heavyweight cotton, ember-gradient flame mark and sleeve wordmark.</p>
                 <div class="shop-foot">
-                    <span class="shop-price">Price at launch</span>
+                    <span class="shop-price">UGX 70,000<span class="price-note">estimated launch price</span></span>
                     <a class="shop-btn" href="#waitlist">Join drop list</a>
                 </div>
             </div>
@@ -107,9 +111,9 @@ footer{border-top:1px solid var(--smoke);padding:28px 0;color:var(--dim);font-si
             <div class="shop-body">
                 <span class="shop-line ember">Ember Line</span>
                 <h3>Build Loop jumper</h3>
-                <p>Charcoal crewneck with a <code>while(true){ build(); }</code> molten print.</p>
+                <p>Charcoal crewneck with a molten continuous-build graphic.</p>
                 <div class="shop-foot">
-                    <span class="shop-price">Price at launch</span>
+                    <span class="shop-price">UGX 80,000<span class="price-note">estimated launch price</span></span>
                     <a class="shop-btn" href="#waitlist">Join drop list</a>
                 </div>
             </div>
@@ -122,7 +126,7 @@ footer{border-top:1px solid var(--smoke);padding:28px 0;color:var(--dim);font-si
                 <h3>Cap + tote + pin set</h3>
                 <p>Giveaway-ready trio: embroidered cap, tote and enamel flame pin.</p>
                 <div class="shop-foot">
-                    <span class="shop-price">Price at launch</span>
+                    <span class="shop-price">UGX 135,000<span class="price-note">estimated launch price</span></span>
                     <a class="shop-btn" href="#waitlist">Join drop list</a>
                 </div>
             </div>
@@ -159,13 +163,16 @@ footer{border-top:1px solid var(--smoke);padding:28px 0;color:var(--dim);font-si
             <div class="shop-body">
                 <span class="shop-line crew">Forge Crew</span>
                 <h3>Crew cap</h3>
-                <p>Tonal 3D embroidery, ember flame core and <code>crew</code> on the back.</p>
+                <p>Tonal 3D embroidery, ember flame core and crew wordmark on the back.</p>
                 <div class="shop-foot">
                     <span class="shop-price">Not for sale</span>
                     <span class="shop-tag">Earned, not sold</span>
                 </div>
             </div>
         </article>
+    </div>
+    <div class="pricing-note">
+        <strong>How these estimates work:</strong> each Ember Line price applies a 75% markup to a planning landed cost, then rounds to the next UGX 5,000. That is not the same as a 75% gross margin. Supplier quotes, packaging, payment fees and delivery can change the final price. <a href="forgekit.html#pricing">Test the formula in ForgeKit →</a>
     </div>
 </div></section>
 
