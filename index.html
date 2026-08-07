@@ -1993,7 +1993,7 @@
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
 
-            <form id="projectBriefForm" class="brim-form reveal stagger-3" action="mailto:brimstonetech1@gmail.com" method="GET" enctype="text/plain">
+            <form id="projectBriefForm" class="brim-form reveal stagger-3" action="#contact">
                 <label class="sr-only" for="briefName">Your name</label>
                 <input id="briefName" type="text" name="name" placeholder="Your name" autocomplete="name" required>
                 <label class="sr-only" for="briefEmail">Work email</label>
@@ -2039,7 +2039,7 @@
                 <defs><linearGradient id="flameGrad" x1="12" y1="2" x2="12" y2="19"><stop stop-color="#F59E0B"/><stop offset="1" stop-color="#E8710A"/></linearGradient></defs>
             </svg>
             <span class="visitor-counter-number" id="visitorCount">—</span>
-            <span class="visitor-counter-label">explorers have passed through</span>
+            <span class="visitor-counter-label">visits from this browser</span>
         </div>
     </div>
 
@@ -2118,7 +2118,7 @@
 
     <!-- Wallpaper Lightbox -->
     <div class="wp-lightbox" id="wpLightbox">
-        <img id="wpLightboxImg" src="" alt="Wallpaper Preview">
+        <img id="wpLightboxImg" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Wallpaper Preview">
         <a class="wp-lightbox-dl" id="wpLightboxDl" href="#" download>
             ⬇ Download Full Resolution
         </a>
@@ -2316,8 +2316,7 @@
 
         // ═══════════════════════════════════════
         // VISITOR COUNTER
-        // Uses CountAPI (free, no auth, persistent)
-        // Fallback: localStorage estimate
+        // Privacy-friendly local browser count; no third-party request.
         // ═══════════════════════════════════════
         (function initVisitorCounter() {
             const el = document.getElementById('visitorCount');
@@ -2341,34 +2340,13 @@
                 requestAnimationFrame(step);
             }
 
-            // Try CountAPI
-            const namespace = 'brimstonetech-github-io';
-            const key = 'page-visits';
-            const endpoint = isNewSession
-                ? `https://api.countapi.xyz/hit/${namespace}/${key}`
-                : `https://api.countapi.xyz/get/${namespace}/${key}`;
-
-            fetch(endpoint)
-                .then(r => r.json())
-                .then(data => {
-                    if (data && data.value) {
-                        sessionStorage.setItem(STORAGE_KEY, '1');
-                        localStorage.setItem(COUNT_CACHE_KEY, data.value);
-                        animateCount(data.value);
-                    } else {
-                        throw new Error('No value');
-                    }
-                })
-                .catch(() => {
-                    // Fallback: local estimate
-                    let count = parseInt(localStorage.getItem(COUNT_CACHE_KEY) || '0');
-                    if (isNewSession) {
-                        count += 1;
-                        localStorage.setItem(COUNT_CACHE_KEY, count);
-                        sessionStorage.setItem(STORAGE_KEY, '1');
-                    }
-                    animateCount(count || 1);
-                });
+            let count = parseInt(localStorage.getItem(COUNT_CACHE_KEY) || '0', 10);
+            if (isNewSession) {
+                count += 1;
+                localStorage.setItem(COUNT_CACHE_KEY, count);
+                sessionStorage.setItem(STORAGE_KEY, '1');
+            }
+            animateCount(count || 1);
         })();
 
         // ═══════════════════════════════════════

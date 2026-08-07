@@ -1,4 +1,3 @@
-<script>
 // BrimstoneTech - Intense Originkit-inspired Effects
 (function() {
     'use strict';
@@ -148,4 +147,3 @@
         console.log('%cIntense Brimstone Effects Loaded 🔥', 'color:#FF4400; font-size:15px; font-weight:bold');
     });
 })();
-</script>
