@@ -78,6 +78,7 @@
             scroll-behavior: smooth;
             scrollbar-width: thin;
             scrollbar-color: var(--ember) var(--charcoal);
+            overflow-x: clip;
         }
 
         body {
@@ -1688,6 +1689,7 @@
             #ember-canvas { opacity: .24; }
             .scroll-indicator { animation: none; }
             .about-layout > * { min-width: 0; }
+            .reveal-left, .reveal-right { transform: translateY(24px); }
         }
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
