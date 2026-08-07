@@ -1070,15 +1070,7 @@
 
         /* ═══ CURSOR GLOW (desktop only) ═══ */
         .cursor-glow {
-            position: fixed;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(232, 113, 10, 0.04) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-            transform: translate(-50%, -50%);
-            transition: opacity 0.3s;
+            display: none;
         }
 
         /* ═══ TEXT REVEAL ANIMATION ═══ */
@@ -1657,6 +1649,50 @@
         #merch .work-card-small h4 {
             margin-bottom: .5rem;
         }
+
+        /* Restrained effects: atmosphere belongs to the hero, never over content. */
+        .hero::before { background: radial-gradient(ellipse, rgba(232, 113, 10, 0.055) 0%, transparent 67%); }
+        #ember-canvas { opacity: .42; }
+        .contact-glow {
+            width: min(480px, 100%);
+            height: 420px;
+            background: radial-gradient(ellipse, rgba(232, 113, 10, 0.035) 0%, transparent 65%);
+        }
+        .brim-section-embers {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+            -webkit-mask-image: linear-gradient(to bottom, #000 0 68%, transparent 96%);
+            mask-image: linear-gradient(to bottom, #000 0 68%, transparent 96%);
+        }
+        .brim-section-embers i {
+            position: absolute;
+            left: var(--x);
+            top: var(--y);
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--flame);
+            opacity: 0;
+            animation: quietEmber var(--duration) ease-in-out var(--delay) infinite;
+        }
+        @keyframes quietEmber {
+            0%, 100% { opacity: 0; transform: translate(0, 8px); }
+            32% { opacity: .32; }
+            70% { opacity: .12; transform: translate(var(--drift), -34px); }
+        }
+        .brim-card-active { border-color: rgba(232, 113, 10, .24) !important; }
+        @media (max-width: 768px) {
+            #ember-canvas { opacity: .24; }
+            .scroll-indicator { animation: none; }
+            .about-layout > * { min-width: 0; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+            #ember-canvas, .brim-section-embers { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -1672,6 +1708,7 @@
         <ul class="nav-links" id="navLinks">
             <li><a href="#services">Services</a></li>
             <li><a href="#work">Work</a></li>
+            <li><a href="forgekit.html">ForgeKit</a></li>
             <li><a href="brio.html">BRIO</a></li>
             <li><a href="#coming-soon">Coming Soon</a></li>
             <li><a href="#about">About</a></li>
@@ -1688,7 +1725,6 @@
         <canvas id="ember-canvas"></canvas>
         <div class="hero-content">
             <div class="hero-tag">
-                <span class="pulse"></span>
                 Available for projects
             </div>
             <h1>
@@ -1854,6 +1890,34 @@
                     </div>
                     <a href="https://github.com/BrimstoneTech/brim-quick-actions" class="work-link" target="_blank">
                         View on GitHub
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ForgeKit -->
+    <section id="forgekit">
+        <div class="section-container">
+            <div class="section-label reveal">Free browser toolkit</div>
+            <h2 class="section-title reveal stagger-1">Put a number on<br>the problem first</h2>
+            <p class="section-subtitle reveal stagger-2">ForgeKit turns repetitive work into a cost estimate, tests automation readiness and helps you send a brief a developer can actually price.</p>
+
+            <div class="work-grid-small merch-grid">
+                <div class="work-card-small reveal stagger-1">
+                    <div class="work-badge merch-badge">Measure</div>
+                    <h4>Process cost + software ROI</h4>
+                    <p>Estimate annual manual-work cost, potential recovery, project payback and year-one return with every assumption visible.</p>
+                    <a href="forgekit.html" class="work-link">Open ForgeKit
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+                <div class="work-card-small reveal stagger-2">
+                    <div class="work-badge merch-badge">Decide</div>
+                    <h4>Automation fit + project brief</h4>
+                    <p>Check whether a workflow is ready to automate, then generate a structured brief you can copy, download or email.</p>
+                    <a href="forgekit.html#brief" class="work-link">Build a brief
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
                 </div>
@@ -2048,93 +2112,19 @@
         <p>© 2025 BrimstoneTech · Kampala, Uganda</p>
     </footer>
 
-    <!-- Gift Modal (triggered at 50% scroll) -->
-    <!-- Wallpaper Gallery Overlay -->
-    <div class="gift-overlay" id="giftOverlay">
-        <div class="gift-card">
-            <button class="gift-close" id="giftClose" aria-label="Close">✕</button>
-            <div class="gift-particles" id="giftParticles"></div>
-            <div class="gift-icon">🎁</div>
-            <h3 class="gift-title">Free BrimstoneTech Wallpapers</h3>
-            <p class="gift-subtitle">Forged in fire: click to preview, download to keep.</p>
-
-            <div class="wp-gallery-label">🖥 Desktop</div>
-            <div class="wp-gallery-grid">
-                <div class="wp-gallery-item" data-full="wallpapers/brio_orb_desktop.png">
-                    <a class="wp-gallery-dl" href="wallpapers/brio_orb_desktop.png" download title="Download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
-                    <img src="wallpapers/thumbs/brio_orb_desktop_thumb.jpg" alt="BRIO Orb Desktop" loading="lazy">
-                    <div class="wp-gallery-info">
-                        <div class="wp-gallery-name">BRIO Orb</div>
-                        <div class="wp-gallery-desc">Fire neural tendrils</div>
-                    </div>
-                </div>
-                <div class="wp-gallery-item" data-full="wallpapers/brimstone_fire_abstract.png">
-                    <a class="wp-gallery-dl" href="wallpapers/brimstone_fire_abstract.png" download title="Download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
-                    <img src="wallpapers/thumbs/brimstone_fire_abstract_thumb.jpg" alt="Brimstone Fire Abstract" loading="lazy">
-                    <div class="wp-gallery-info">
-                        <div class="wp-gallery-name">Brimstone Fire</div>
-                        <div class="wp-gallery-desc">Molten lava on obsidian</div>
-                    </div>
-                </div>
-                <div class="wp-gallery-item" data-full="wallpapers/neural_fire_network.png">
-                    <a class="wp-gallery-dl" href="wallpapers/neural_fire_network.png" download title="Download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
-                    <img src="wallpapers/thumbs/neural_fire_network_thumb.jpg" alt="Neural Fire Network" loading="lazy">
-                    <div class="wp-gallery-info">
-                        <div class="wp-gallery-name">Neural Fire</div>
-                        <div class="wp-gallery-desc">Fire synapses & cyan nodes</div>
-                    </div>
-                </div>
-                <div class="wp-gallery-item" data-full="wallpapers/brimstone_crystals_desktop.png">
-                    <a class="wp-gallery-dl" href="wallpapers/brimstone_crystals_desktop.png" download title="Download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
-                    <img src="wallpapers/thumbs/brimstone_crystals_desktop_thumb.jpg" alt="Brimstone Crystals" loading="lazy">
-                    <div class="wp-gallery-info">
-                        <div class="wp-gallery-name">Brimstone Crystals</div>
-                        <div class="wp-gallery-desc">Sulfur & cyan energy core</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="wp-gallery-label">📱 Mobile</div>
-            <div class="wp-gallery-grid">
-                <div class="wp-gallery-item mobile" data-full="wallpapers/brio_orb_mobile.png">
-                    <a class="wp-gallery-dl" href="wallpapers/brio_orb_mobile.png" download title="Download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
-                    <img src="wallpapers/thumbs/brio_orb_mobile_thumb.jpg" alt="BRIO Orb Mobile" loading="lazy">
-                    <div class="wp-gallery-info">
-                        <div class="wp-gallery-name">BRIO Orb</div>
-                        <div class="wp-gallery-desc">Portrait fire spirals</div>
-                    </div>
-                </div>
-                <div class="wp-gallery-item mobile" data-full="wallpapers/volcanic_horizon_mobile.png">
-                    <a class="wp-gallery-dl" href="wallpapers/volcanic_horizon_mobile.png" download title="Download"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
-                    <img src="wallpapers/thumbs/volcanic_horizon_mobile_thumb.jpg" alt="Volcanic Horizon Mobile" loading="lazy">
-                    <div class="wp-gallery-info">
-                        <div class="wp-gallery-name">Volcanic Horizon</div>
-                        <div class="wp-gallery-desc">Lava rivers & cyan star</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Wallpaper Lightbox -->
-    <div class="wp-lightbox" id="wpLightbox">
-        <img id="wpLightboxImg" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Wallpaper Preview">
-        <a class="wp-lightbox-dl" id="wpLightboxDl" href="#" download>
-            ⬇ Download Full Resolution
-        </a>
-    </div>
+    <!-- Wallpaper giveaway removed: the site now keeps the path to project work uninterrupted. -->
 
     <script>
         // ═══════════════════════════════════════
         // EMBER PARTICLES
         // ═══════════════════════════════════════
-        const canvas = document.getElementById('ember-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
+        const heroCanvas = document.getElementById('ember-canvas');
+        const heroCtx = heroCanvas.getContext('2d');
+        let heroParticles = [];
 
         function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            heroCanvas.width = window.innerWidth;
+            heroCanvas.height = window.innerHeight;
         }
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
@@ -2144,13 +2134,13 @@
                 this.reset();
             }
             reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = canvas.height + 10;
-                this.size = Math.random() * 3 + 1;
-                this.speedY = -(Math.random() * 1.2 + 0.3);
-                this.speedX = (Math.random() - 0.5) * 0.5;
-                this.opacity = Math.random() * 0.5 + 0.2;
-                this.fadeRate = Math.random() * 0.003 + 0.001;
+                this.x = Math.random() * heroCanvas.width;
+                this.y = heroCanvas.height + 10;
+                this.size = Math.random() * 1.2 + 0.35;
+                this.speedY = -(Math.random() * 0.35 + 0.15);
+                this.speedX = (Math.random() - 0.5) * 0.16;
+                this.opacity = Math.random() * 0.24 + 0.08;
+                this.fadeRate = Math.random() * 0.0015 + 0.0007;
                 this.wobble = Math.random() * Math.PI * 2;
                 this.wobbleSpeed = Math.random() * 0.02 + 0.01;
             }
@@ -2163,36 +2153,36 @@
                 if (this.opacity <= 0 || this.y < -10) this.reset();
                       }
             draw() {
-                ctx.save();
-                ctx.globalAlpha = this.opacity;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+                heroCtx.save();
+                heroCtx.globalAlpha = this.opacity;
+                heroCtx.beginPath();
+                heroCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                const gradient = heroCtx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
                 gradient.addColorStop(0, '#FBBF24');
                 gradient.addColorStop(0.5, '#E8710A');
                 gradient.addColorStop(1, 'transparent');
-                ctx.fillStyle = gradient;
-                ctx.fill();
-                ctx.restore();
+                heroCtx.fillStyle = gradient;
+                heroCtx.fill();
+                heroCtx.restore();
             }
         }
 
         // Create particles
-        for (let i = 0; i < 40; i++) {
+        for (let i = 0; i < (window.innerWidth < 700 ? 10 : 18); i++) {
             const p = new Ember();
-            p.y = Math.random() * canvas.height; // start scattered
-            particles.push(p);
+            p.y = Math.random() * heroCanvas.height; // start scattered
+            heroParticles.push(p);
         }
 
         function animateEmbers() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
+            heroCtx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
+            heroParticles.forEach(p => {
                 p.update();
                 p.draw();
             });
             requestAnimationFrame(animateEmbers);
         }
-        animateEmbers();
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) animateEmbers();
 
         // ═══════════════════════════════════════
         // MOCKUP CHART BARS
@@ -2232,17 +2222,6 @@
                 nav.classList.remove('scrolled');
             }
         });
-
-        // ═══════════════════════════════════════
-        // CURSOR GLOW (desktop only)
-        // ═══════════════════════════════════════
-        if (window.matchMedia('(pointer: fine)').matches) {
-            const glow = document.getElementById('cursorGlow');
-            document.addEventListener('mousemove', (e) => {
-                glow.style.left = e.clientX + 'px';
-                glow.style.top = e.clientY + 'px';
-            });
-        }
 
         // ═══════════════════════════════════════
         // MOBILE MENU
@@ -2358,6 +2337,7 @@
             const lightbox = document.getElementById('wpLightbox');
             const lightboxImg = document.getElementById('wpLightboxImg');
             const lightboxDl = document.getElementById('wpLightboxDl');
+            if (!overlay || !closeBtn || !lightbox || !lightboxImg || !lightboxDl) return;
             const GIFT_SHOWN_KEY = 'bt_gift_shown';
             let giftTriggered = false;
 

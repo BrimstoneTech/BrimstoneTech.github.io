@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ForgeKit — Free Business Calculators by BrimstoneTech</title>
+<meta name="description" content="Estimate process waste, test automation readiness, model software ROI, build a project brief and price products — free in your browser.">
+<link rel="canonical" href="https://brimstonetech.github.io/forgekit.html">
+<meta property="og:title" content="ForgeKit — Turn a rough business problem into numbers">
+<meta property="og:description" content="Five practical calculators for process cost, automation readiness, software ROI, project scoping and product pricing.">
+<meta property="og:image" content="https://brimstonetech.github.io/logo.png">
+<meta property="og:url" content="https://brimstonetech.github.io/forgekit.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="forgekit.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<header class="site-bar">
+    <div class="wrap bar-inner">
+        <a class="brand" href="index.html"><img src="logo.png" alt="BrimstoneTech logo">Brimstone<span>Tech</span></a>
+        <nav aria-label="Main navigation">
+            <a href="index.html#work">Work</a>
+            <a href="merch.html">Merch</a>
+            <a href="index.html#contact">Talk to Isaiah</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="wrap hero-grid">
+            <div>
+                <p class="eyebrow">Free browser toolkit · No signup</p>
+                <h1>Turn a rough business problem into <em>numbers</em>.</h1>
+                <p class="hero-copy">ForgeKit helps you measure repetitive work, test whether automation is worth it and leave with a brief a developer can actually price.</p>
+                <a class="button primary" href="#tools" data-open-tool="leakage">Measure a process</a>
+                <p class="privacy-note">Your entries stay in this browser unless you choose to email them.</p>
+            </div>
+            <aside class="hero-readout" aria-label="ForgeKit capabilities">
+                <div class="readout-head">
+                    <span>FORGEKIT / 01</span>
+                    <span class="status"><i></i> READY</span>
+                </div>
+                <ol>
+                    <li><strong>01</strong><span>Process cost</span><b>UGX / YEAR</b></li>
+                    <li><strong>02</strong><span>Automation fit</span><b>SCORE / 100</b></li>
+                    <li><strong>03</strong><span>Software ROI</span><b>MONTHS</b></li>
+                    <li><strong>04</strong><span>Project brief</span><b>READY TO SEND</b></li>
+                    <li><strong>05</strong><span>Product price</span><b>MARKUP / MARGIN</b></li>
+                </ol>
+            </aside>
+        </div>
+    </section>
+
+    <section class="proof-strip" aria-label="ForgeKit benefits">
+        <div class="wrap proof-grid">
+            <span><b>5</b> practical tools</span>
+            <span><b>0</b> accounts required</span>
+            <span><b>1</b> useful next step</span>
+        </div>
+    </section>
+
+    <section class="tool-area" id="tools">
+        <div class="wrap">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">The workbench</p>
+                    <h2>Choose the question you need answered.</h2>
+                </div>
+                <p>Start with imperfect estimates. Every assumption remains visible so you can replace it with real figures later.</p>
+            </div>
+
+            <div class="tool-tabs" role="tablist" aria-label="ForgeKit tools">
+                <button type="button" role="tab" aria-selected="true" aria-controls="panel-leakage" id="tab-leakage" data-tool="leakage"><span>01</span> Process cost</button>
+                <button type="button" role="tab" aria-selected="false" aria-controls="panel-readiness" id="tab-readiness" data-tool="readiness" tabindex="-1"><span>02</span> Automation fit</button>
+                <button type="button" role="tab" aria-selected="false" aria-controls="panel-roi" id="tab-roi" data-tool="roi" tabindex="-1"><span>03</span> Software ROI</button>
+                <button type="button" role="tab" aria-selected="false" aria-controls="panel-brief" id="tab-brief" data-tool="brief" tabindex="-1"><span>04</span> Scope a build</button>
+                <button type="button" role="tab" aria-selected="false" aria-controls="panel-pricing" id="tab-pricing" data-tool="pricing" tabindex="-1"><span>05</span> Price a product</button>
+            </div>
+
+            <section class="tool-panel" id="panel-leakage" role="tabpanel" aria-labelledby="tab-leakage" data-panel="leakage">
+                <div class="panel-intro">
+                    <p class="eyebrow">Process cost calculator</p>
+                    <h3>What is repetitive work costing you?</h3>
+                    <p>Measure time and rework before talking about software. This is a planning estimate, not a guaranteed saving.</p>
+                </div>
+                <div class="calculator-grid">
+                    <form class="calc-form" id="leakageForm">
+                        <label>People doing this process
+                            <input type="number" id="processPeople" min="1" step="1" value="3" inputmode="numeric">
+                        </label>
+                        <label>Hours each person spends per week
+                            <input type="number" id="processHours" min="0" step="0.5" value="8" inputmode="decimal">
+                        </label>
+                        <label>Estimated labour cost per hour (UGX)
+                            <input type="number" id="processRate" min="0" step="1000" value="15000" inputmode="numeric">
+                        </label>
+                        <label>Rework, errors or delay per month (UGX)
+                            <input type="number" id="processErrors" min="0" step="10000" value="250000" inputmode="numeric">
+                        </label>
+                        <label>Potential time recovered
+                            <select id="processRecovery">
+                                <option value="0.25">25% — cautious</option>
+                                <option value="0.5" selected>50% — planning case</option>
+                                <option value="0.75">75% — aggressive</option>
+                            </select>
+                        </label>
+                    </form>
+                    <div class="result-card" aria-live="polite">
+                        <p class="result-label">Estimated annual process cost</p>
+                        <strong class="hero-result" id="annualProcessCost">UGX 0</strong>
+                        <div class="metric-row"><span>Manual labour</span><b id="annualLabourCost">UGX 0</b></div>
+                        <div class="metric-row"><span>Rework and errors</span><b id="annualErrorCost">UGX 0</b></div>
+                        <div class="metric-row accent"><span>Value potentially recoverable</span><b id="recoverableValue">UGX 0</b></div>
+                        <p class="result-note" id="leakageNote">Based on the recovery assumption you selected.</p>
+                        <button class="text-button" id="leakageToBrief" type="button" data-open-tool="brief">Turn this into a project brief →</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tool-panel" id="panel-readiness" role="tabpanel" aria-labelledby="tab-readiness" data-panel="readiness" hidden>
+                <div class="panel-intro">
+                    <p class="eyebrow">Automation readiness scan</p>
+                    <h3>Does this process need software — or just a clearer rule?</h3>
+                    <p>Rate the current process honestly. A low score is useful: it can stop you buying technology before the workflow is ready.</p>
+                </div>
+                <div class="calculator-grid">
+                    <form class="calc-form readiness-form" id="readinessForm">
+                        <label>The same steps happen repeatedly
+                            <select data-readiness><option value="0">Rarely</option><option value="1">Sometimes</option><option value="2" selected>Often</option></select>
+                        </label>
+                        <label>Information is copied between tools
+                            <select data-readiness><option value="0">No</option><option value="1">Occasionally</option><option value="2" selected>Every week</option></select>
+                        </label>
+                        <label>Errors follow a recognisable pattern
+                            <select data-readiness><option value="0">No</option><option value="1" selected>Somewhat</option><option value="2">Yes</option></select>
+                        </label>
+                        <label>Approvals or handoffs cause delays
+                            <select data-readiness><option value="0">Rarely</option><option value="1" selected>Sometimes</option><option value="2">Often</option></select>
+                        </label>
+                        <label>The process has a clear owner
+                            <select data-readiness><option value="0">No</option><option value="1" selected>Partly</option><option value="2">Yes</option></select>
+                        </label>
+                        <label>Inputs and expected outputs are defined
+                            <select data-readiness><option value="0">No</option><option value="1" selected>Mostly</option><option value="2">Yes</option></select>
+                        </label>
+                        <label>Volume is growing or already difficult to manage
+                            <select data-readiness><option value="0">No</option><option value="1">Gradually</option><option value="2" selected>Yes</option></select>
+                        </label>
+                        <label>A measurable result matters to the business
+                            <select data-readiness><option value="0">Not yet</option><option value="1">Somewhat</option><option value="2" selected>Yes</option></select>
+                        </label>
+                    </form>
+                    <div class="result-card score-card" aria-live="polite">
+                        <div class="score-ring" id="readinessRing"><strong id="readinessScore">0</strong><span>/ 100</span></div>
+                        <p class="score-title" id="readinessTitle">Calculating fit…</p>
+                        <p class="result-note" id="readinessAdvice"></p>
+                        <div class="recommendation" id="readinessRecommendation"></div>
+                        <button class="text-button" id="readinessToBrief" type="button" data-open-tool="brief">Build a brief from this result →</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tool-panel" id="panel-roi" role="tabpanel" aria-labelledby="tab-roi" data-panel="roi" hidden>
+                <div class="panel-intro">
+                    <p class="eyebrow">Software ROI estimator</p>
+                    <h3>How quickly could the investment pay back?</h3>
+                    <p>Use conservative benefits. The result is only as good as the assumptions entered here.</p>
+                </div>
+                <div class="calculator-grid">
+                    <form class="calc-form" id="roiForm">
+                        <label>One-time implementation cost (UGX)
+                            <input type="number" id="roiUpfront" min="0" step="100000" value="8000000" inputmode="numeric">
+                        </label>
+                        <label>Monthly software and support cost (UGX)
+                            <input type="number" id="roiMonthlyCost" min="0" step="10000" value="300000" inputmode="numeric">
+                        </label>
+                        <label>Monthly time and error savings (UGX)
+                            <input type="number" id="roiSavings" min="0" step="10000" value="1800000" inputmode="numeric">
+                        </label>
+                        <label>Additional monthly gross profit (UGX)
+                            <input type="number" id="roiGrowth" min="0" step="10000" value="500000" inputmode="numeric">
+                        </label>
+                    </form>
+                    <div class="result-card" aria-live="polite">
+                        <p class="result-label">Estimated payback</p>
+                        <strong class="hero-result" id="roiPayback">—</strong>
+                        <div class="metric-row"><span>Net benefit per month</span><b id="roiMonthlyBenefit">UGX 0</b></div>
+                        <div class="metric-row"><span>Net value after year one</span><b id="roiYearOne">UGX 0</b></div>
+                        <div class="metric-row accent"><span>Year-one ROI</span><b id="roiPercent">—</b></div>
+                        <p class="result-note" id="roiNote">Positive ROI is not guaranteed; validate every assumption before investing.</p>
+                        <button class="text-button" id="roiToBrief" type="button" data-open-tool="brief">Ask BrimstoneTech to validate the case →</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tool-panel" id="panel-brief" role="tabpanel" aria-labelledby="tab-brief" data-panel="brief" hidden>
+                <div class="panel-intro">
+                    <p class="eyebrow">Guided project brief</p>
+                    <h3>Give a developer the context needed to estimate the work.</h3>
+                    <p>No technical language required. Describe what happens now, who feels the pain and what “better” would look like.</p>
+                </div>
+                <div class="brief-grid">
+                    <form class="calc-form" id="briefForm">
+                        <label>Your name
+                            <input type="text" id="briefName" autocomplete="name" placeholder="Jane">
+                        </label>
+                        <label>Company or organisation
+                            <input type="text" id="briefCompany" autocomplete="organization" placeholder="Acme Logistics">
+                        </label>
+                        <label>What is happening now?
+                            <textarea id="briefProblem" rows="4" placeholder="Orders are copied from WhatsApp into a spreadsheet, then entered again for invoicing…"></textarea>
+                        </label>
+                        <label>Who uses or owns this process?
+                            <input type="text" id="briefUsers" placeholder="Five sales staff and one accountant">
+                        </label>
+                        <label>Systems already involved
+                            <input type="text" id="briefSystems" placeholder="WhatsApp, Excel and QuickBooks">
+                        </label>
+                        <label>What result would make the project worthwhile?
+                            <textarea id="briefOutcome" rows="3" placeholder="One order record, invoices created automatically and a daily status report"></textarea>
+                        </label>
+                        <label>Desired timing
+                            <input type="text" id="briefTiming" placeholder="Pilot in the next 8 weeks">
+                        </label>
+                    </form>
+                    <div class="brief-output">
+                        <div class="output-head">
+                            <div><p class="result-label">Generated brief</p><strong>Ready to refine</strong></div>
+                            <span id="briefCompleteness">0% complete</span>
+                        </div>
+                        <pre id="briefPreview"></pre>
+                        <div class="output-actions">
+                            <button class="button secondary" id="copyBrief" type="button">Copy brief</button>
+                            <button class="button secondary" id="downloadBrief" type="button">Download .txt</button>
+                            <a class="button primary" id="emailBrief" href="mailto:brimstonetech1@gmail.com">Email BrimstoneTech</a>
+                        </div>
+                        <p class="privacy-note">Email opens in your mail app. Nothing is submitted automatically.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tool-panel" id="panel-pricing" role="tabpanel" aria-labelledby="tab-pricing" data-panel="pricing" hidden>
+                <div class="panel-intro">
+                    <p class="eyebrow">Product pricing lab</p>
+                    <h3>Markup is not margin. Price with the right formula.</h3>
+                    <p>A 75% markup multiplies landed cost by 1.75. A 75% gross margin requires a selling price four times the landed cost.</p>
+                </div>
+                <div class="calculator-grid">
+                    <form class="calc-form" id="pricingForm">
+                        <label>Base item or materials (UGX)
+                            <input type="number" id="priceBase" min="0" step="1000" value="35000" inputmode="numeric">
+                        </label>
+                        <label>Branding or production (UGX)
+                            <input type="number" id="priceProduction" min="0" step="1000" value="5000" inputmode="numeric">
+                        </label>
+                        <label>Packaging per unit (UGX)
+                            <input type="number" id="pricePackaging" min="0" step="1000" value="3000" inputmode="numeric">
+                        </label>
+                        <label>Allocated fees and delivery per unit (UGX)
+                            <input type="number" id="priceFees" min="0" step="1000" value="2000" inputmode="numeric">
+                        </label>
+                        <fieldset>
+                            <legend>Target formula</legend>
+                            <label class="radio"><input type="radio" name="pricingMethod" value="markup" checked> 75% markup on cost</label>
+                            <label class="radio"><input type="radio" name="pricingMethod" value="margin"> 75% gross margin</label>
+                        </fieldset>
+                    </form>
+                    <div class="result-card" aria-live="polite">
+                        <p class="result-label">Suggested selling price</p>
+                        <strong class="hero-result" id="suggestedPrice">UGX 0</strong>
+                        <div class="metric-row"><span>Total landed cost</span><b id="landedCost">UGX 0</b></div>
+                        <div class="metric-row"><span>Gross profit per unit</span><b id="grossProfit">UGX 0</b></div>
+                        <div class="metric-row accent"><span>Resulting gross margin</span><b id="grossMargin">0%</b></div>
+                        <p class="result-note" id="pricingExplanation"></p>
+                        <p class="result-warning">Planning tool only. Confirm supplier quotes, taxes, failed-payment risk and delivery before publishing a price.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <section class="conversion">
+        <div class="wrap conversion-grid">
+            <div>
+                <p class="eyebrow">When the numbers point to a build</p>
+                <h2>Bring the process. Work directly with the developer.</h2>
+                <p>BrimstoneTech builds custom Odoo modules, Python automation and practical AI integrations from Kampala. No account-manager handoff.</p>
+            </div>
+            <a class="button primary" href="mailto:brimstonetech1@gmail.com?subject=ForgeKit%20project%20enquiry&body=Hi%20Isaiah%2C%0A%0AI%20used%20ForgeKit%20and%20would%20like%20to%20discuss%20this%20process%3A%0A%0A">Discuss the process</a>
+        </div>
+    </section>
+</main>
+
+<footer><div class="wrap">&copy; 2026 BrimstoneTech · Kampala, Uganda · Software Forged in Fire</div></footer>
+<script src="forgekit.js" defer></script>
+<script src="brim-effects.js" defer></script>
+</body>
+</html>
