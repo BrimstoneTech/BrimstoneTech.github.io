@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Forge Shop — BrimstoneTech Merch</title>
-<meta name="description" content="BrimstoneTech merch: estimated launch prices for Ember Line tees, jumpers and accessories, plus Forge Crew kit for the team.">
+<title>Products & Forge Shop — BrimstoneTech</title>
+<meta name="description" content="Buy the Wi-Fire licensed hotspot deployment package, request configured MikroTik hardware, or join the BrimstoneTech merchandise drop.">
 <link rel="canonical" href="https://brimstonetech.github.io/merch.html">
-<meta property="og:title" content="Forge Shop — BrimstoneTech Merch">
-<meta property="og:description" content="Ember Line tees, jumpers and caps. Software Forged in Fire.">
-<meta property="og:image" content="https://brimstonetech.github.io/assets/merch/ember_tee_bone_share.jpg">
+<meta property="og:title" content="Wi-Fire & Forge Shop — BrimstoneTech">
+<meta property="og:description" content="A deployment-ready hotspot architecture with optional setup and configured MikroTik hardware.">
+<meta property="og:image" content="https://brimstonetech.github.io/assets/products/wifire-deployment-share.png">
 <meta property="og:url" content="https://brimstonetech.github.io/merch.html">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -65,7 +65,63 @@ h2{font-family:'Space Grotesk',sans-serif;font-size:1.9rem;letter-spacing:-.01em
 .pricing-note{margin-top:26px;padding:18px 20px;border:1px solid var(--smoke);border-left:2px solid var(--ember);border-radius:6px;background:var(--ash);color:var(--warm-gray);font-size:.82rem}
 .pricing-note strong{color:var(--warm-white)}
 .pricing-note a{color:var(--ember)}
+.product-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:24px}
+.product-nav a{border:1px solid var(--smoke);border-radius:999px;padding:8px 14px;color:var(--warm-gray);font-size:.76rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
+.product-nav a:hover{border-color:var(--ember);color:var(--warm-white)}
+.wifire-section{padding:76px 0;background:linear-gradient(180deg,rgba(26,17,16,.7),rgba(13,11,10,.46))}
+.wifire-hero{display:grid;grid-template-columns:minmax(0,.88fr) minmax(440px,1.12fr);gap:48px;align-items:center}
+.wifire-copy{max-width:560px}
+.product-lockup{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.product-lockup img{width:62px;height:62px}
+.product-lockup strong{display:block;font-family:'Space Grotesk',sans-serif;font-size:1.55rem}
+.product-lockup span{display:block;color:var(--warm-gray);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+.wifire-copy h2{font-size:clamp(2.2rem,5vw,4.25rem);line-height:1.02;margin-bottom:18px}
+.wifire-copy h2 em{font-style:normal;color:var(--flame)}
+.wifire-lead{color:var(--warm-gray);font-size:1.05rem;max-width:540px}
+.proof-strip{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}
+.proof-strip span{display:flex;align-items:center;gap:8px;border:1px solid var(--smoke);border-radius:999px;padding:8px 12px;color:var(--warm-gray);font-size:.78rem}
+.proof-strip span::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ember);box-shadow:0 0 10px rgba(232,113,10,.35)}
+.wifire-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:26px}
+.ghost-btn{display:inline-block;padding:13px 18px;border:1px solid var(--smoke);border-radius:999px;color:var(--warm-white);font-weight:700;text-decoration:none}
+.ghost-btn:hover{border-color:var(--ember)}
+.mockup-shell{position:relative;border:1px solid var(--smoke);border-radius:20px;padding:10px;background:rgba(26,17,16,.7);box-shadow:0 32px 70px rgba(0,0,0,.38)}
+.mockup-shell img{display:block;width:100%;border-radius:12px}
+.mockup-note{position:absolute;right:18px;bottom:18px;max-width:270px;padding:10px 12px;border-radius:10px;background:rgba(13,11,10,.9);border:1px solid var(--smoke);color:var(--warm-gray);font-size:.7rem}
+.offer-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-top:72px}
+.offer-head .sub{max-width:620px}
+.offer-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:26px}
+.offer-card{position:relative;display:flex;flex-direction:column;background:var(--ash);border:1px solid var(--smoke);border-radius:16px;padding:26px}
+.offer-card.featured{border-color:rgba(232,113,10,.68);box-shadow:inset 0 1px 0 rgba(251,191,36,.12),0 18px 44px rgba(0,0,0,.2)}
+.offer-kicker{color:var(--ember);font-size:.68rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+.offer-card h3{font-family:'Space Grotesk',sans-serif;font-size:1.26rem;margin:7px 0}
+.offer-price{font-family:'Space Grotesk',sans-serif;font-size:1.75rem;font-weight:700;margin:8px 0 14px}
+.offer-card p,.offer-card li{color:var(--warm-gray);font-size:.86rem}
+.offer-card ul{list-style:none;margin:14px 0 22px}
+.offer-card li{position:relative;padding:7px 0 7px 18px;border-bottom:1px solid rgba(42,35,32,.75)}
+.offer-card li::before{content:"";position:absolute;left:0;top:15px;width:6px;height:6px;border-radius:50%;background:var(--ember)}
+.offer-card .shop-btn{margin-top:auto;text-align:center}
+.project-total{display:block;margin:0 0 18px;padding:10px 12px;border-radius:8px;background:rgba(232,113,10,.08);color:var(--flame);font-size:.76rem;font-weight:700}
+.pricing-split{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+.price-panel{border:1px solid var(--smoke);border-radius:16px;background:rgba(26,17,16,.82);padding:25px}
+.price-panel h3{font-family:'Space Grotesk',sans-serif;margin-bottom:6px}
+.price-panel strong{display:block;font-family:'Space Grotesk',sans-serif;font-size:1.65rem;margin:10px 0}
+.price-panel p{color:var(--warm-gray);font-size:.86rem}
+.bundle-note{margin-top:20px;color:var(--dim);font-size:.78rem}
+.device-prices{width:100%;border-collapse:collapse;margin-top:24px;background:rgba(26,17,16,.72);border:1px solid var(--smoke);border-radius:14px;overflow:hidden;display:table}
+.device-prices th,.device-prices td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--smoke);font-size:.82rem}
+.device-prices th{color:var(--dim);font-size:.66rem;letter-spacing:.11em;text-transform:uppercase}
+.device-prices td{color:var(--warm-gray)}
+.device-prices td:first-child{color:var(--warm-white);font-weight:700}
+.device-prices td:last-child{color:var(--flame);font-family:'Space Grotesk',sans-serif;font-weight:700;white-space:nowrap}
+.device-prices tr:last-child td{border-bottom:0}
+.license-box{display:grid;grid-template-columns:auto 1fr;gap:18px;margin-top:30px;padding:24px;border:1px solid rgba(232,113,10,.32);border-radius:14px;background:rgba(232,113,10,.06)}
+.license-box svg{width:28px;color:var(--ember)}
+.license-box h3{font-family:'Space Grotesk',sans-serif;font-size:1rem;margin-bottom:6px}
+.license-box p{color:var(--warm-gray);font-size:.82rem}
+.boundaries{margin-top:22px;padding:20px;border-left:2px solid var(--ember);background:rgba(13,11,10,.58);color:var(--warm-gray);font-size:.82rem}
+.boundaries strong{color:var(--warm-white)}
 footer{border-top:1px solid var(--smoke);padding:28px 0;color:var(--dim);font-size:.82rem;text-align:center}
+@media(max-width:920px){.wifire-hero{grid-template-columns:1fr}.wifire-copy{max-width:720px}.offer-grid{grid-template-columns:1fr}.pricing-split{grid-template-columns:1fr}}
 @media(max-width:640px){
   header.bar .wrap{height:auto;min-height:68px;align-items:flex-start;padding-top:16px;padding-bottom:14px}
   .bar nav{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px 14px}
@@ -73,23 +129,149 @@ footer{border-top:1px solid var(--smoke);padding:28px 0;color:var(--dim);font-si
   .hero{padding-top:64px}
   .shop-grid{grid-template-columns:1fr}
   .panel{padding:24px}
+  .wifire-section{padding:58px 0}
+  .offer-head{align-items:start;flex-direction:column}
+  .mockup-note{position:static;max-width:none;border-width:1px 0 0;border-radius:0;padding:12px 4px 4px;background:transparent}
+  .license-box{grid-template-columns:1fr}
+  .device-prices,.device-prices tbody,.device-prices tr,.device-prices td{display:block}
+  .device-prices thead{display:none}
+  .device-prices tr{padding:13px 16px;border-bottom:1px solid var(--smoke)}
+  .device-prices tr:last-child{border-bottom:0}
+  .device-prices td{padding:2px 0;border:0}
+  .device-prices td:last-child{margin-top:4px}
 }
 </style>
 </head>
 <body>
 <header class="bar"><div class="wrap">
     <a class="brand" href="index.html"><img src="logo.png" alt="BrimstoneTech logo">Brimstone<span>Tech</span></a>
-    <nav aria-label="Main navigation"><a href="index.html#work">Work</a><a href="forgekit.html">ForgeKit</a><a href="index.html#about">About</a><a href="index.html#contact">Get in touch</a></nav>
+    <nav aria-label="Main navigation"><a href="#wifire">Wi-Fire</a><a href="#merch">Merch</a><a href="forgekit.html">ForgeKit</a><a href="index.html#contact">Get in touch</a></nav>
 </div></header>
 
 <main>
 <div class="hero"><div class="wrap">
-    <div class="label">The Forge Shop</div>
-    <h1>Merch that looks like <em>the code ships</em></h1>
-    <p class="sub">Two lines, one mark. <strong>Ember Line</strong> is for anyone who wants it. <strong>Forge Crew</strong> is quiet, numbered kit for people who actually build with BrimstoneTech.</p>
+    <div class="label">BrimstoneTech products</div>
+    <h1>Systems to run. Gear to <em>carry the fire.</em></h1>
+    <p class="sub">Deploy a time-based public WiFi business with Wi-Fire, or browse the Forge Shop. Every offer is scoped clearly before payment.</p>
+    <div class="product-nav"><a href="#wifire">Explore Wi-Fire</a><a href="#merch">Browse merchandise</a></div>
 </div></div>
 
-<section><div class="wrap">
+<section class="wifire-section" id="wifire"><div class="wrap">
+    <div class="wifire-hero">
+        <div class="wifire-copy">
+            <div class="product-lockup">
+                <img src="assets/products/wifire-mark.svg" alt="Wi-Fire flame and Wi-Fi mark">
+                <div><strong>Wi-Fire</strong><span>A BrimstoneTech product</span></div>
+            </div>
+            <div class="label">For hotspot and side-hustle operators</div>
+            <h2>Turn an internet connection into a <em>time-based WiFi service.</em></h2>
+            <p class="wifire-lead">Wi-Fire combines a branded customer portal, Mobile Money payment architecture and MikroTik HotSpot configuration into one deployment-ready package. Customers choose time, pay and activate the connected device.</p>
+            <div class="proof-strip" aria-label="Wi-Fire package highlights">
+                <span>Five time passes</span>
+                <span>MTN MoMo + Airtel Money ready</span>
+                <span>Single-use device activation</span>
+            </div>
+            <div class="wifire-actions">
+                <a class="mail-btn" href="mailto:brimstonetech1@gmail.com?subject=Wi-Fire%20deployment%20quotation&body=Hi%20TAISAN%2C%0A%0AI%20want%20a%20Wi-Fire%20quotation.%0A%0ABusiness%20or%20site%20type%3A%20%0ATown%20or%20district%3A%20%0AIndoor%2C%20outdoor%2C%20or%20both%3A%20%0AEstimated%20concurrent%20users%3A%20%0AInternet%20provider%20and%20package%20(if%20known)%3A%20%0APremises%20size%2Fnumber%20of%20floors%3A%20%0ADo%20you%20want%20setup%20and%20hardware%20supply%3F%20">Request a site quotation</a>
+                <a class="ghost-btn" href="https://brimstonetech.github.io/Wi-Fi-Portal/" target="_blank" rel="noopener">Open live prototype ↗</a>
+            </div>
+        </div>
+        <div class="mockup-shell">
+            <img src="assets/products/wifire-deployment-mockup.svg" alt="Concept illustration of the Wi-Fire portal, MikroTik gateway and wired access points">
+            <div class="mockup-note">Concept illustration. Hardware quantity and placement are confirmed after a site survey.</div>
+        </div>
+    </div>
+
+    <div class="offer-head">
+        <div><div class="label">Core offer</div><h2>Start with the software. Add only what the site needs.</h2></div>
+        <p class="sub sub-left">The fixed software price keeps the entry decision clear. Installation and hardware are separate so you do not pay for equipment before the premises is assessed.</p>
+    </div>
+    <div class="pricing-split">
+        <article class="price-panel">
+            <div class="offer-kicker">Licensed deployment package</div>
+            <strong>UGX 800,000</strong>
+            <p>One-business, one-site Wi-Fire licence with a branded portal build, confirmed time-pass catalogue, payment and activation API contract, MikroTik HotSpot/RADIUS starter configuration, deployment notes and operator handover documents. Production backend implementation and hosting are scoped in the final quotation once provider credentials and hosting requirements are known.</p>
+        </article>
+        <article class="price-panel">
+            <div class="offer-kicker">Optional implementation service</div>
+            <strong>+ UGX 250,000</strong>
+            <p>Remote setup and configuration for one approved MikroTik gateway and the initial Wi-Fire site: portal branding, package loading, HotSpot configuration, payment-flow preparation and remote handover. Site visit, travel, cabling and civil work are quoted separately.</p>
+        </article>
+    </div>
+
+    <div class="offer-head">
+        <div><div class="label">Hardware bundles</div><h2>Reference packages for a strong first deployment</h2></div>
+        <p class="sub sub-left">These are budgetary BrimstoneTech supply prices in Uganda, not coverage promises. We use centrally managed wired access points—not household repeaters—for stable capacity and roaming.</p>
+    </div>
+    <div class="offer-grid">
+        <article class="offer-card">
+            <span class="offer-kicker">Hardware only · entry</span>
+            <h3>Single-zone starter</h3>
+            <div class="offer-price">UGX 1,450,000</div>
+            <p>For a compact indoor site that needs an approachable first hardware step.</p>
+            <ul>
+                <li>1× MikroTik hAP ax² compact gateway</li>
+                <li>1× MikroTik cAP ax indoor access point</li>
+                <li>1× 650VA UPS</li>
+                <li>Basic surge and patch accessories allowance</li>
+            </ul>
+            <span class="project-total">Starting project total: UGX 2,500,000*</span>
+            <a class="shop-btn" href="mailto:brimstonetech1@gmail.com?subject=Wi-Fire%20Single-zone%20Starter%20quote&body=Hi%20TAISAN%2C%0A%0AI%20want%20a%20quote%20for%20the%20Wi-Fire%20Single-zone%20Starter.%0A%0ATown%2Fdistrict%3A%20%0ASite%20type%3A%20%0AEstimated%20users%3A%20">Request quote</a>
+        </article>
+        <article class="offer-card featured">
+            <span class="offer-kicker">Hardware only · recommended</span>
+            <h3>Two-zone launch kit</h3>
+            <div class="offer-price">UGX 3,400,000</div>
+            <p>The practical “router + two repeaters” idea, engineered correctly with two wired indoor access points.</p>
+            <ul>
+                <li>1× MikroTik RB5009UPr+S+IN gateway</li>
+                <li>2× MikroTik cAP ax indoor access points</li>
+                <li>1× 650VA UPS</li>
+                <li>Surge, patch and mounting accessories allowance</li>
+            </ul>
+            <span class="project-total">Starting project total: UGX 4,450,000*</span>
+            <a class="shop-btn" href="mailto:brimstonetech1@gmail.com?subject=Wi-Fire%20Two-zone%20Launch%20Kit%20quote&body=Hi%20TAISAN%2C%0A%0AI%20want%20a%20quote%20for%20the%20Wi-Fire%20Two-zone%20Launch%20Kit.%0A%0ATown%2Fdistrict%3A%20%0ASite%20type%3A%20%0ANumber%20of%20floors%3A%20%0AEstimated%20users%3A%20">Request quote</a>
+        </article>
+        <article class="offer-card">
+            <span class="offer-kicker">Hardware only · mixed coverage</span>
+            <h3>Indoor + outdoor kit</h3>
+            <div class="offer-price">UGX 3,300,000</div>
+            <p>For one indoor area plus a courtyard, frontage or sheltered outdoor customer zone.</p>
+            <ul>
+                <li>1× MikroTik RB5009UPr+S+IN gateway</li>
+                <li>1× MikroTik cAP ax indoor access point</li>
+                <li>1× MikroTik wAP ax outdoor access point</li>
+                <li>1× 650VA UPS and outdoor surge allowance</li>
+            </ul>
+            <span class="project-total">Starting project total: UGX 4,350,000*</span>
+            <a class="shop-btn" href="mailto:brimstonetech1@gmail.com?subject=Wi-Fire%20Indoor%20and%20Outdoor%20Kit%20quote&body=Hi%20TAISAN%2C%0A%0AI%20want%20a%20quote%20for%20the%20Wi-Fire%20Indoor%20and%20Outdoor%20Kit.%0A%0ATown%2Fdistrict%3A%20%0AOutdoor%20area%20description%3A%20%0AEstimated%20users%3A%20">Request quote</a>
+        </article>
+    </div>
+    <div class="bundle-note">*Starting project total combines the hardware bundle, UGX 800,000 Wi-Fire licence and UGX 250,000 remote setup. It excludes physical installation and the other items stated below.</div>
+
+    <table class="device-prices">
+        <thead><tr><th>Budgetary device</th><th>Use</th><th>BrimstoneTech supply price</th></tr></thead>
+        <tbody>
+            <tr><td>MikroTik hAP ax²</td><td>Compact gateway for an entry site</td><td>UGX 495,000</td></tr>
+            <tr><td>MikroTik RB5009UPr+S+IN</td><td>Scalable PoE gateway/controller</td><td>UGX 1,750,000</td></tr>
+            <tr><td>MikroTik cAP ax</td><td>Managed indoor ceiling access point</td><td>UGX 575,000</td></tr>
+            <tr><td>MikroTik wAP ax</td><td>Managed weatherproof outdoor access point</td><td>UGX 425,000</td></tr>
+            <tr><td>650VA UPS</td><td>Gateway and network power protection</td><td>UGX 250,000</td></tr>
+        </tbody>
+    </table>
+    <div class="bundle-note">Hardware pricing checked 8 August 2026 against manufacturer suggested prices, East African distributor/retailer listings and Uganda power/cabling retail references. Prices are rounded budget estimates and remain subject to supplier stock, exchange rate, freight and the final bill of materials. Access points are priced instead of household repeaters because wired backhaul provides a stronger managed deployment.</div>
+
+    <div class="license-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 10V7a5 5 0 0 1 10 0v3"/><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M12 14v3"/></svg>
+        <div>
+            <h3>Single-business, single-deployment licence</h3>
+            <p>Purchase permits the named client to operate one Wi-Fire deployment and keep reasonable operational backups. Source-code resale, sublicensing, redistribution, product cloning and unauthorized copying are not permitted. Expansion to another independently operated site requires a written licence extension or additional deployment licence.</p>
+        </div>
+    </div>
+    <div class="boundaries"><strong>What “deployment-ready” means:</strong> the portal, architecture, contracts and router starter configuration are prepared for implementation. The public prototype does not process live money. A working site still requires an approved Mobile Money merchant account or payment provider, a secure hosted backend, an ISP connection that permits the intended use, physical hardware, site validation and production testing. Hardware bundles do not include Wi-Fire software, the optional setup fee, cabling runs, installation labour, travel, internet subscription, merchant/provider fees, permits or taxes unless a written quotation says otherwise.</div>
+</div></section>
+
+<section id="merch"><div class="wrap">
     <h2>The drop</h2>
     <p class="sub sub-left">Prototype visuals with planning prices. Final blanks and landed costs will be confirmed before the first print run.</p>
     <div class="shop-grid">

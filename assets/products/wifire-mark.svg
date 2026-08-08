@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Wi-Fire mark</title>
+  <desc id="desc">A flame rising through a Wi-Fi signal inside a charcoal hexagon.</desc>
+  <defs>
+    <linearGradient id="ember" x1="14" y1="54" x2="49" y2="12" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E8710A"/>
+      <stop offset=".58" stop-color="#F59E0B"/>
+      <stop offset="1" stop-color="#FBBF24"/>
+    </linearGradient>
+  </defs>
+  <path fill="#0D0B0A" d="M32 2.5 57.5 17v30L32 61.5 6.5 47V17z"/>
+  <path d="M16.5 25.2c8.6-8.4 22.4-8.4 31 0M22.2 31.8a14.2 14.2 0 0 1 19.6 0"
+        fill="none" stroke="url(#ember)" stroke-width="4" stroke-linecap="round"/>
+  <path fill="url(#ember)" d="M32.1 27.2c-.6 4.7-7.8 8.3-7.8 15.5a7.8 7.8 0 0 0 15.6 0c0-4.7-2.5-8.4-5.7-12.1.1 4.2-2.1 6.1-4.1 7.9.8-3.9.2-7.5 2-11.3Z"/>
+  <path fill="#FBBF24" d="M32.2 38.3c-.7 2.5-3.3 3.8-3.3 6.3a3.1 3.1 0 1 0 6.2 0c0-1.9-1.2-3.7-2.9-6.3Z"/>
+</svg>

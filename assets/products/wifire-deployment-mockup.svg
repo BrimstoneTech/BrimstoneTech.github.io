@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">Wi-Fire deployment kit illustration</title>
+  <desc id="desc">A Wi-Fire customer portal connected to a MikroTik gateway, two indoor access points and an outdoor access point.</desc>
+  <defs>
+    <linearGradient id="ember" x1="180" y1="760" x2="1160" y2="110" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E8710A"/>
+      <stop offset=".55" stop-color="#F59E0B"/>
+      <stop offset="1" stop-color="#FBBF24"/>
+    </linearGradient>
+    <radialGradient id="halo" cx=".5" cy=".5" r=".5">
+      <stop stop-color="#E8710A" stop-opacity=".3"/>
+      <stop offset="1" stop-color="#E8710A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="screen" x1="300" y1="260" x2="610" y2="695" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2A2320"/>
+      <stop offset="1" stop-color="#120D0B"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%">
+      <feDropShadow dx="0" dy="26" stdDeviation="24" flood-color="#000" flood-opacity=".52"/>
+    </filter>
+    <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+
+  <rect width="1400" height="900" rx="44" fill="#0D0B0A"/>
+  <circle cx="1010" cy="365" r="420" fill="url(#halo)"/>
+  <g fill="#FBBF24">
+    <circle cx="116" cy="130" r="2" opacity=".24"/>
+    <circle cx="1260" cy="144" r="2.4" opacity=".34"/>
+    <circle cx="820" cy="92" r="1.7" opacity=".28"/>
+    <circle cx="1310" cy="704" r="2" opacity=".24"/>
+    <circle cx="675" cy="810" r="1.8" opacity=".24"/>
+  </g>
+
+  <g opacity=".54" fill="none" stroke="#E8710A" stroke-width="3" stroke-linecap="round" stroke-dasharray="7 14">
+    <path d="M615 470C770 470 782 290 914 290"/>
+    <path d="M615 500C820 500 875 590 1012 590"/>
+    <path d="M614 530C770 530 790 714 916 714"/>
+  </g>
+  <g fill="#F59E0B">
+    <circle cx="760" cy="433" r="5"/>
+    <circle cx="799" cy="520" r="5"/>
+    <circle cx="758" cy="591" r="5"/>
+  </g>
+
+  <!-- Customer portal -->
+  <g filter="url(#shadow)">
+    <rect x="152" y="112" width="476" height="670" rx="48" fill="#080706" stroke="#3B2B21" stroke-width="3"/>
+    <rect x="176" y="136" width="428" height="622" rx="31" fill="url(#screen)"/>
+    <rect x="321" y="150" width="138" height="13" rx="7" fill="#44362E"/>
+    <g transform="translate(206 182)">
+      <path fill="#0D0B0A" stroke="#3B2B21" stroke-width="2" d="M34 0 62 16v32L34 64 6 48V16z"/>
+      <path d="M17 24c9-9 25-9 34 0M23 32c6-5 16-5 22 0" fill="none" stroke="url(#ember)" stroke-width="4" stroke-linecap="round"/>
+      <path fill="url(#ember)" d="M34 28c-1 7-9 10-9 18a9 9 0 0 0 18 0c0-5-3-9-6-13 0 5-3 7-5 9 1-5 0-9 2-14Z"/>
+      <text x="81" y="29" fill="#F5F0EB" font-family="Space Grotesk,Arial,sans-serif" font-size="27" font-weight="700">Wi-Fire</text>
+      <text x="81" y="50" fill="#A89B8C" font-family="Inter,Arial,sans-serif" font-size="11" letter-spacing="2">BY BRIMSTONETECH</text>
+    </g>
+    <text x="210" y="296" fill="#F5F0EB" font-family="Space Grotesk,Arial,sans-serif" font-size="40" font-weight="700">Choose your time.</text>
+    <text x="210" y="330" fill="#A89B8C" font-family="Inter,Arial,sans-serif" font-size="17">Pay. Activate this device. Connect.</text>
+    <g font-family="Inter,Arial,sans-serif">
+      <rect x="208" y="370" width="360" height="76" rx="18" fill="#1A1110" stroke="#E8710A" stroke-width="2"/>
+      <text x="232" y="402" fill="#A89B8C" font-size="14">6 HOURS</text>
+      <text x="232" y="430" fill="#F5F0EB" font-size="24" font-weight="700">UGX 500</text>
+      <circle cx="532" cy="408" r="15" fill="#E8710A"/>
+      <path d="m525 408 5 5 10-11" fill="none" stroke="#0D0B0A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="208" y="462" width="172" height="72" rx="16" fill="#1A1110" stroke="#2A2320"/>
+      <text x="228" y="490" fill="#A89B8C" font-size="12">12 HOURS</text>
+      <text x="228" y="518" fill="#F5F0EB" font-size="20" font-weight="700">UGX 1,000</text>
+      <rect x="396" y="462" width="172" height="72" rx="16" fill="#1A1110" stroke="#2A2320"/>
+      <text x="416" y="490" fill="#A89B8C" font-size="12">24 HOURS</text>
+      <text x="416" y="518" fill="#F5F0EB" font-size="20" font-weight="700">UGX 2,000</text>
+      <rect x="208" y="566" width="360" height="66" rx="33" fill="#E8710A"/>
+      <text x="388" y="607" text-anchor="middle" fill="#0D0B0A" font-size="15" font-weight="800" letter-spacing="1.5">PAY &amp; ACTIVATE</text>
+      <text x="388" y="674" text-anchor="middle" fill="#A89B8C" font-size="14">One payment · one code · one device</text>
+      <circle cx="370" cy="708" r="5" fill="#3BD27C"/>
+      <text x="386" y="714" fill="#A89B8C" font-size="13">Portal ready</text>
+    </g>
+  </g>
+
+  <!-- Gateway -->
+  <g filter="url(#shadow)">
+    <rect x="812" y="385" width="445" height="130" rx="28" fill="#161211" stroke="#3B312D" stroke-width="3"/>
+    <rect x="843" y="420" width="242" height="57" rx="9" fill="#090807" stroke="#342923"/>
+    <g fill="#E8710A">
+      <rect x="866" y="438" width="23" height="20" rx="3"/>
+      <rect x="900" y="438" width="23" height="20" rx="3"/>
+      <rect x="934" y="438" width="23" height="20" rx="3"/>
+      <rect x="968" y="438" width="23" height="20" rx="3"/>
+      <rect x="1002" y="438" width="23" height="20" rx="3"/>
+      <rect x="1036" y="438" width="23" height="20" rx="3"/>
+    </g>
+    <circle cx="1129" cy="448" r="8" fill="#3BD27C"/>
+    <circle cx="1160" cy="448" r="8" fill="#E8710A"/>
+    <text x="843" y="541" fill="#F5F0EB" font-family="Space Grotesk,Arial,sans-serif" font-size="20" font-weight="700">RB5009UPr gateway</text>
+    <text x="843" y="568" fill="#A89B8C" font-family="Inter,Arial,sans-serif" font-size="14">HotSpot · CAPsMAN · PoE</text>
+  </g>
+
+  <!-- Indoor access points -->
+  <g filter="url(#shadow)">
+    <ellipse cx="955" cy="232" rx="126" ry="54" fill="#161211" stroke="#44352D" stroke-width="3"/>
+    <ellipse cx="955" cy="221" rx="104" ry="38" fill="#F5F0EB"/>
+    <circle cx="955" cy="221" r="7" fill="#E8710A"/>
+    <path d="M932 213c13-12 33-12 46 0M940 222c8-7 22-7 30 0" fill="none" stroke="#E8710A" stroke-width="4" stroke-linecap="round"/>
+    <text x="955" y="315" text-anchor="middle" fill="#F5F0EB" font-family="Space Grotesk,Arial,sans-serif" font-size="18" font-weight="700">cAP ax · indoor</text>
+  </g>
+  <g filter="url(#shadow)">
+    <ellipse cx="1130" cy="232" rx="126" ry="54" fill="#161211" stroke="#44352D" stroke-width="3"/>
+    <ellipse cx="1130" cy="221" rx="104" ry="38" fill="#F5F0EB"/>
+    <circle cx="1130" cy="221" r="7" fill="#E8710A"/>
+    <path d="M1107 213c13-12 33-12 46 0M1115 222c8-7 22-7 30 0" fill="none" stroke="#E8710A" stroke-width="4" stroke-linecap="round"/>
+    <text x="1130" y="315" text-anchor="middle" fill="#F5F0EB" font-family="Space Grotesk,Arial,sans-serif" font-size="18" font-weight="700">cAP ax · indoor</text>
+  </g>
+
+  <!-- Outdoor access point -->
+  <g filter="url(#shadow)">
+    <rect x="938" y="622" width="116" height="196" rx="46" fill="#F5F0EB"/>
+    <rect x="956" y="650" width="80" height="120" rx="30" fill="#E8E1DA"/>
+    <circle cx="996" cy="790" r="7" fill="#E8710A"/>
+    <path d="M974 678c13-12 31-12 44 0M982 688c8-7 20-7 28 0" fill="none" stroke="#E8710A" stroke-width="4" stroke-linecap="round"/>
+    <text x="1100" y="708" fill="#F5F0EB" font-family="Space Grotesk,Arial,sans-serif" font-size="20" font-weight="700">wAP ax</text>
+    <text x="1100" y="736" fill="#A89B8C" font-family="Inter,Arial,sans-serif" font-size="14">weatherproof outdoor AP</text>
+  </g>
+
+  <g font-family="Inter,Arial,sans-serif">
+    <rect x="777" y="74" width="470" height="58" rx="29" fill="#1A1110" stroke="#3B2D25"/>
+    <circle cx="811" cy="103" r="9" fill="#E8710A"/>
+    <text x="835" y="110" fill="#F5F0EB" font-size="16" font-weight="700" letter-spacing="1">WIRED ACCESS POINTS · ONE MANAGED NETWORK</text>
+    <text x="700" y="856" fill="#6B5E52" font-size="13">CONCEPT ILLUSTRATION · FINAL HARDWARE AND QUANTITIES FOLLOW A SITE SURVEY</text>
+  </g>
+</svg>
